@@ -1,17 +1,30 @@
 plugins {
-    id 'idea'
-    id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
+
 base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
+    archivesName = "${mod_name}-forge"
 }
+
+jarJar.enable()
+
 mixin {
     add(sourceSets.main, "${mod_id}.refmap.json")
 
     config("${mod_id}.mixins.json")
     config("${mod_id}.forge.mixins.json")
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+
+    implementation "xstopho.simpleconfigapi:simpleconfigapi-forge:${simple_config_api}"
+    implementation fg.deobf("xstopho.stophoslib:stophoslib-forge:${stophos_lib}")
+    jarJar "xstopho.stophoslib:stophoslib-forge:${stophos_lib}"
+
+    compileOnly project(":common")
 }
 
 minecraft {
@@ -72,16 +85,6 @@ minecraft {
     }
 }
 
-sourceSets.main.resources.srcDir 'src/generated/resources'
-
-dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly project(":common")
-    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
-
-    implementation fg.deobf("curse.maven:simple-config-api-954054:4984839")
-}
-
 tasks.withType(JavaCompile).configureEach {
     source(project(":common").sourceSets.main.allSource)
 }
@@ -94,21 +97,13 @@ tasks.named("sourcesJar", Jar) {
 
 processResources {
     from project(":common").sourceSets.main.resources
+    from file('src/generated/resources')
 }
 
 jar.finalizedBy('reobfJar')
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId base.archivesName.get()
-            from components.java
-            fg.component(it)
-        }
-    }
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
 }

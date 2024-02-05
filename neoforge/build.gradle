@@ -1,19 +1,28 @@
 plugins {
-    id 'idea'
-    id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.41'
+    id 'net.neoforged.gradle.userdev' version '7.0.81'
     id 'java-library'
 }
+
 base {
-    archivesName = "${mod_name}-neoforge-${minecraft_version}"
+    archivesName = "${mod_name}-neoforge"
 }
 
-// Automatically enable neoforge AccessTransformers if the file exists
-// This location is hardcoded in FML and can not be changed.
-// https://github.com/neoforged/FancyModLoader/blob/a952595eaaddd571fbc53f43847680b00894e0c1/loader/src/main/java/net/neoforged/fml/loading/moddiscovery/ModFile.java#L118
+jarJar.enable()
+
 if (file('src/main/resources/META-INF/accesstransformer.cfg').exists()) {
     minecraft.accessTransformers.file file('src/main/resources/META-INF/accesstransformer.cfg')
 }
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neoforge_version}"
+
+    implementation "xstopho.simpleconfigapi:simpleconfigapi-neoforge:${simple_config_api}"
+    implementation "xstopho.stophoslib:stophoslib-neoforge:${stophos_lib}"
+    jarJar "xstopho.stophoslib:stophoslib-neoforge:${stophos_lib}"
+
+    compileOnly project(":common")
+}
+
 runs {
     configureEach {
         modSource project.sourceSets.main
@@ -25,23 +34,9 @@ runs {
         systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'
     }
-
-    gameTestServer {
-        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-    }
-
     data {
         programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
-}
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-dependencies {
-    implementation "net.neoforged:neoforge:${neoforge_version}"
-    compileOnly project(":common")
-
-    implementation "xstopho.simpleconfigapi:simpleconfigapi-neoforge:${simple_config_api}"
 }
 
 // NeoGradle compiles the game, but we don't want to add our common code to the game's code
@@ -61,18 +56,5 @@ tasks.named("sourcesJar", Jar) {
 
 tasks.withType(ProcessResources).matching(notNeoTask).configureEach {
     from project(":common").sourceSets.main.resources
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId base.archivesName.get()
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+    from file('src/generated/resources')
 }

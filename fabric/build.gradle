@@ -1,21 +1,23 @@
 plugins {
-    id 'java'
-    id 'idea'
-    id 'maven-publish'
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
 }
+
 base {
     archivesName = "${mod_name}-fabric-${minecraft_version}"
 }
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    implementation project(":common")
 
-    modImplementation "xstopho.simpleconfigapi:simpleconfigapi-fabric:${simple_config_api}"
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+
+    implementation "xstopho.simpleconfigapi:simpleconfigapi-fabric:${simple_config_api}"
+    implementation "xstopho.stophoslib:stophoslib-fabric:${stophos_lib}"
+    include "xstopho.stophoslib:stophoslib-fabric:${stophos_lib}"
+
+    compileOnly project(":common")
 }
 
 loom {
@@ -38,6 +40,15 @@ loom {
             ideConfigGenerated(true)
             runDir("run")
         }
+        datagen {
+            inherit server
+            name "Fabric Datagen"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+            vmArg "-Dfabric-api.datagen.modid=${mod_id}"
+
+            runDir "build/datagen"
+        }
     }
 }
 
@@ -53,18 +64,5 @@ tasks.named("sourcesJar", Jar) {
 
 processResources {
     from project(":common").sourceSets.main.resources
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId base.archivesName.get()
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "file://" + System.getenv("local_maven")
-        }
-    }
+    from file("src/main/generated")
 }
