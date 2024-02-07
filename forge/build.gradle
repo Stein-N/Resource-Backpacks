@@ -20,9 +20,9 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 
-    implementation "xstopho.simpleconfigapi:simpleconfigapi-forge:${simple_config_api}"
-    implementation fg.deobf("xstopho.stophoslib:stophoslib-forge:${stophos_lib}")
-    jarJar "xstopho.stophoslib:stophoslib-forge:${stophos_lib}"
+    implementation("xstopho.simpleconfigapi:simpleconfigapi-forge:${simple_config_api}")
+    implementation(fg.deobf("xstopho.stophoslib:stophoslib-forge:${stophos_lib}"))
+    jarJar("xstopho.stophoslib:stophoslib-forge:${stophos_lib}")
 
     compileOnly project(":common")
 }

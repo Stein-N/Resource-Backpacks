@@ -3,7 +3,7 @@
     "id": "${mod_id}",
     "version": "${version}",
     "name": "${mod_name}",
-    "description": "${description}",
+    "description": "${mod_description}",
     "authors": [
         "${mod_author}"
     ],
@@ -11,12 +11,12 @@
         "homepage": "https://fabricmc.net/",
         "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
-    "license": "${license}",
+    "license": "${mod_license}",
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "net.xstopho.resourcebackpacks.ResourceBackpacks"
+            "net.xstopho.resource_backpacks.ResourceBackpacks"
         ]
     },
     "mixins": [
@@ -24,13 +24,9 @@
         "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.14",
-        "fabric": "*",
-        "minecraft": "1.20.2",
+        "fabric-api": "*",
+        "fabricloader": "*",
+        "minecraft": "${minecraft_version}",
         "java": ">=17"
-    },
-    "suggests": {
-        "another-mod": "*"
     }
 }
-  

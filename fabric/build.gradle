@@ -13,8 +13,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
-    implementation "xstopho.simpleconfigapi:simpleconfigapi-fabric:${simple_config_api}"
-    implementation "xstopho.stophoslib:stophoslib-fabric:${stophos_lib}"
+    modImplementation "xstopho.simpleconfigapi:simpleconfigapi-fabric:${simple_config_api}"
+    modImplementation "xstopho.stophoslib:stophoslib-fabric:${stophos_lib}"
     include "xstopho.stophoslib:stophoslib-fabric:${stophos_lib}"
 
     compileOnly project(":common")
