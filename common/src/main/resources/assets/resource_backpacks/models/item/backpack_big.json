@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"3": "resource_backpacks:item/backpack",
-		"particle": "resource_backpacks:item/backpack"
+		"3": "resource_backpacks:item/backpack_big",
+		"particle": "resource_backpacks:item/backpack_big"
 	},
 	"elements": [
 		{
@@ -148,7 +148,7 @@
 			"scale": [0.75, 0.75, 0.75]
 		},
 		"gui": {
-			"rotation": [20.58, -31.5, -0.6],
+			"rotation": [30, -32, 0],
 			"translation": [0, 1, 0],
 			"scale": [0.9, 0.9, 0.9]
 		},

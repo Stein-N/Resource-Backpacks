@@ -15,9 +15,7 @@
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
-        "main": [
-            "net.xstopho.resource_backpacks.ResourceBackpacks"
-        ]
+        "main": [ "net.xstopho.resource_backpacks.ResourceBackpacks" ]
     },
     "mixins": [
         "${mod_id}.mixins.json",

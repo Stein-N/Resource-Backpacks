@@ -7,6 +7,4 @@ public interface ItemHelper {
     Item getSmallBackpack();
     Item getBigBackpack();
     Item getTravelBackpack();
-
-    Item getBackpack();
 }

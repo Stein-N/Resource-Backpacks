@@ -12,11 +12,11 @@ public class ItemRegistry {
 
     public static final RegistryProvider<Item> ITEMS = RegistryProvider.get(Registries.ITEM, Constants.MOD_ID);
 
-    public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack", ItemRegistry::getBackpackItem);
+    private static final ItemHelper helper = Services.load(ItemHelper.class);
 
-    private static Item getBackpackItem() {
-        return Services.load(ItemHelper.class).getBackpack();
-    }
+    public static final RegistryObject<Item> BACKPACK_SMALL = ITEMS.register("backpack_small", helper::getSmallBackpack);
+    public static final RegistryObject<Item> BACKPACK_BIG = ITEMS.register("backpack_big", helper::getBigBackpack);
+    public static final RegistryObject<Item> BACKPACK_TRAVEL = ITEMS.register("backpack_travel", helper::getTravelBackpack);
 
     public static void init() {}
 }
