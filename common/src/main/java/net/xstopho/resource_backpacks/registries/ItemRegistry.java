@@ -5,6 +5,7 @@ import net.minecraft.world.item.Item;
 import net.xstopho.resource_backpacks.Constants;
 import net.xstopho.resource_backpacks.platform.Services;
 import net.xstopho.resource_backpacks.platform.service.ItemHelper;
+import net.xstopho.resource_backpacks.util.BackpackLevelOLD;
 import net.xstopho.stophoslib.registration.RegistryObject;
 import net.xstopho.stophoslib.registration.RegistryProvider;
 
@@ -14,9 +15,9 @@ public class ItemRegistry {
 
     private static final ItemHelper helper = Services.load(ItemHelper.class);
 
-    public static final RegistryObject<Item> BACKPACK_SMALL = ITEMS.register("backpack_small", helper::getSmallBackpack);
-    public static final RegistryObject<Item> BACKPACK_BIG = ITEMS.register("backpack_big", helper::getBigBackpack);
-    public static final RegistryObject<Item> BACKPACK_TRAVEL = ITEMS.register("backpack_travel", helper::getTravelBackpack);
+    public static final RegistryObject<Item> BACKPACK_SMALL = ITEMS.register("backpack_small", () -> helper.getSmallBackpack(BackpackLevelOLD.LEATHER));
+    public static final RegistryObject<Item> BACKPACK_BIG = ITEMS.register("backpack_big", () -> helper.getBigBackpack(BackpackLevelOLD.LEATHER));
+    public static final RegistryObject<Item> BACKPACK_TRAVEL = ITEMS.register("backpack_travel", () -> helper.getTravelBackpack(BackpackLevelOLD.LEATHER));
 
     public static void init() {}
 }

@@ -4,15 +4,15 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.xstopho.resource_backpacks.item.BackpackBigItem;
-import net.xstopho.resource_backpacks.item.BackpackItem;
 import net.xstopho.resource_backpacks.item.BackpackSmallItem;
 import net.xstopho.resource_backpacks.item.BackpackTravelItem;
 import net.xstopho.resource_backpacks.platform.service.ItemHelper;
+import net.xstopho.resource_backpacks.util.BackpackLevelOLD;
 
 public class NeoForgeItemHelper implements ItemHelper {
     @Override
-    public Item getSmallBackpack() {
-        return new BackpackSmallItem(new Item.Properties()) {
+    public Item getSmallBackpack(BackpackLevelOLD level) {
+        return new BackpackSmallItem(level, new Item.Properties()) {
             @Override
             public EquipmentSlot getEquipmentSlot(ItemStack stack) {
                 return EquipmentSlot.CHEST;
@@ -21,8 +21,8 @@ public class NeoForgeItemHelper implements ItemHelper {
     }
 
     @Override
-    public Item getBigBackpack() {
-        return new BackpackBigItem(new Item.Properties()) {
+    public Item getBigBackpack(BackpackLevelOLD level) {
+        return new BackpackBigItem(level, new Item.Properties()) {
             @Override
             public EquipmentSlot getEquipmentSlot(ItemStack stack) {
                 return EquipmentSlot.CHEST;
@@ -31,8 +31,8 @@ public class NeoForgeItemHelper implements ItemHelper {
     }
 
     @Override
-    public Item getTravelBackpack() {
-        return new BackpackTravelItem(new Item.Properties()) {
+    public Item getTravelBackpack(BackpackLevelOLD level) {
+        return new BackpackTravelItem(level, new Item.Properties()) {
             @Override
             public EquipmentSlot getEquipmentSlot(ItemStack stack) {
                 return EquipmentSlot.CHEST;
