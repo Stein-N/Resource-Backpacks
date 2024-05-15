@@ -8,8 +8,9 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://github.com/Stein-N/Resource-Backpacks",
+        "sources": "https://github.com/Stein-N/Resource-Backpacks",
+        "issues": "https://github.com/Stein-N/Resource-Backpacks/issues"
     },
     "license": "${mod_license}",
     "icon": "icon.png",
@@ -25,6 +26,9 @@
         "fabric-api": "*",
         "fabricloader": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=17"
+        "java": ">=21",
+
+        "resourceconfigapi": ">=${resource_config_api}",
+        "resourcelibrary": ">=${resource_library}"
     }
 }

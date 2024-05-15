@@ -1,0 +1,28 @@
+plugins {
+    id 'ml-common'
+    id 'ml-loader-publish'
+}
+
+dependencies {
+    compileOnly(project(':common'))
+}
+
+tasks.named('compileJava', JavaCompile) {
+    it.options.encoding = 'UTF-8'
+    it.options.getRelease().set(21)
+    source(project(':common').sourceSets.main.allSource)
+}
+
+tasks.named('javadoc', Javadoc) {
+    source(project(":common").sourceSets.main.allJava)
+}
+
+tasks.named('sourcesJar', Jar) {
+    from project(':common').sourceSets.main.resources
+    from file('src/generated')
+}
+
+processResources {
+    from project(":common").sourceSets.main.resources
+    from file("src/generated")
+}

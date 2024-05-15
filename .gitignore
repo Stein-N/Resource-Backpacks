@@ -20,9 +20,12 @@ build
 
 # other
 eclipse
-run
-runs
+*/runs/server/*
+*/runs/client/*
+*/runs/data/*
+!*/runs/client/options.txt
 
-/fabric/src/main/generated/
+
+/fabric/src/generated/
 /neoforge/src/generated/
 /forge/src/generated/

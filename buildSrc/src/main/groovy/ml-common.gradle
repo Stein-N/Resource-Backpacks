@@ -1,0 +1,71 @@
+plugins {
+    id 'java-library'
+    id 'ml-common-publish'
+}
+
+base {
+    archivesName = "$mod_id-$project.name"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+    withJavadocJar()
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://raw.githubusercontent.com/Stein-N/resources/main/maven' }
+    maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+    maven { url 'https://api.modrinth.com/maven' }
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:24.1.0'
+}
+
+tasks.named('javadoc', Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+tasks.withType(GenerateModuleMetadata).configureEach {
+    enabled = project.name == 'neoforge'
+}
+
+processResources {
+    var expandProps = [
+            // Project related Keys
+            "version": version,
+            "group": project.group,
+
+            // Mod related Keys
+            "minecraft_version": minecraft_version,
+            "mod_name": mod_name,
+            "mod_author": mod_author,
+            "mod_id": mod_id,
+            "mod_license": mod_license,
+            "mod_credits": mod_credits,
+            "mod_description": mod_description,
+
+            // General Key
+            "minecraft_version_range": minecraft_version_range,
+
+            // Fabric Keys
+            "fabric_loader_version": fabric_loader_version,
+            "fabric_api_version": fabric_api_version,
+
+            // NeoForge Keys
+            "neoforge_version": neoforge_version,
+            "neoforge_version_range": neoforge_version_range,
+            "neoforge_loader_version_range": neoforge_loader_version_range,
+
+            // Dependencies
+            "resource_config_api": resource_config_api,
+            "resource_library": resource_library
+    ]
+
+    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+        expand expandProps
+    }
+    inputs.properties(expandProps)
+}
