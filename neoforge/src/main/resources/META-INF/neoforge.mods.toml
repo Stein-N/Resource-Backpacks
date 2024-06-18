@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "${neoforge_loader_version_range}"
+loaderVersion = "[2,]"
 license = "${mod_license}"
 
 [[mods]]
@@ -18,27 +18,27 @@ license = "${mod_license}"
 [[dependencies.${mod_id}]]
     modId = "neoforge"
     required = true
-    versionRange = "${neoforge_version_range}"
+    versionRange = "[${neoforge_version},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId = "minecraft"
-    required = true
+    type = "required"
     versionRange = "${minecraft_version_range}"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId = "resourceconfigapi"
-    required = true
+    type = "required"
     versionRange = "[${resource_config_api},)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.${mod_id}]]
     modId = "resourcelibrary"
-    required = true
+    type = "required"
     versionRange = "[${resource_library},)"
     ordering = "NONE"
     side = "BOTH"

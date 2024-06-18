@@ -3,26 +3,42 @@ plugins {
     id 'ml-loader-publish'
 }
 
+configurations {
+    commonJava {
+        canBeResolved = true
+    }
+    commonResources {
+        canBeResolved = true
+    }
+}
+
 dependencies {
-    compileOnly(project(':common'))
+    compileOnly(project(':common')) {
+        capabilities { requireCapability "$group:$mod_id" }
+    }
+
+    commonJava project(path: ':common', configuration: 'commonJava')
+    commonResources project(path: ':common', configuration: 'commonResources')
 }
 
 tasks.named('compileJava', JavaCompile) {
-    it.options.encoding = 'UTF-8'
-    it.options.getRelease().set(21)
-    source(project(':common').sourceSets.main.allSource)
+    dependsOn(configurations.commonJava)
+    source(configurations.commonJava)
 }
 
 tasks.named('javadoc', Javadoc) {
-    source(project(":common").sourceSets.main.allJava)
+    dependsOn(configurations.commonJava)
+    source(configurations.commonJava)
 }
 
 tasks.named('sourcesJar', Jar) {
-    from project(':common').sourceSets.main.resources
-    from file('src/generated')
+    dependsOn(configurations.commonJava)
+    from(configurations.commonJava)
+    dependsOn(configurations.commonResources)
+    from(configurations.commonResources)
 }
 
 processResources {
-    from project(":common").sourceSets.main.resources
-    from file("src/generated")
+    dependsOn(configurations.commonResources)
+    from(configurations.commonResources)
 }

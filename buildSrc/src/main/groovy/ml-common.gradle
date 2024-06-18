@@ -8,7 +8,7 @@ base {
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    toolchain.languageVersion = JavaLanguageVersion.of(java_version)
     withSourcesJar()
     withJavadocJar()
 }
@@ -28,8 +28,39 @@ tasks.named('javadoc', Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
 }
 
-tasks.withType(GenerateModuleMetadata).configureEach {
-    enabled = project.name == 'neoforge'
+['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+    configurations."$variant".outgoing {
+        capability("$group:${base.archivesName.get()}:$version")
+        capability("$group:$mod_id-${project.name}-${minecraft_version}:$version")
+        capability("$group:$mod_id:$version")
+    }
+    publishing.publications.configureEach {
+        suppressPomMetadataWarningsFor(variant)
+    }
+}
+
+jar {
+    from(rootProject.file("LICENSE")) {
+        rename { "${it}_${mod_name}" }
+    }
+
+    manifest {
+        attributes([
+                'Specification-Title'   : mod_name,
+                'Specification-Vendor'  : mod_author,
+                'Specification-Version' : project.jar.archiveVersion,
+                'Implementation-Title'  : project.name,
+                'Implementation-Version': project.jar.archiveVersion,
+                'Implementation-Vendor' : mod_author,
+                'Built-On-Minecraft'    : minecraft_version
+        ])
+    }
+}
+
+sourcesJar {
+    from(rootProject.file("LICENSE")) {
+        rename { "${it}_${mod_name}" }
+    }
 }
 
 processResources {
@@ -37,6 +68,7 @@ processResources {
             // Project related Keys
             "version": version,
             "group": project.group,
+            "java_version": java_version,
 
             // Mod related Keys
             "minecraft_version": minecraft_version,
@@ -56,8 +88,6 @@ processResources {
 
             // NeoForge Keys
             "neoforge_version": neoforge_version,
-            "neoforge_version_range": neoforge_version_range,
-            "neoforge_loader_version_range": neoforge_loader_version_range,
 
             // Dependencies
             "resource_config_api": resource_config_api,

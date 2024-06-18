@@ -14,8 +14,8 @@ dependencies {
     modImplementation "net.xstopho.resourcelibrary:resourcelibrary-fabric:${resource_library}"
 
     // Runtime Mods
-    modRuntimeOnly "maven.modrinth:emi:${emi}+fabric"
     modRuntimeOnly "maven.modrinth:modmenu:${mod_menu}"
+    modRuntimeOnly "maven.modrinth:emi:${emi}+${minecraft_version}+fabric"
 }
 
 loom {
@@ -30,8 +30,14 @@ loom {
             client()
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
-            programArgs('--username', 'Dev', '--uuid', 'f3878963-f90a-42b5-9c65-c33022ea4484')
+            programArgs('--username', 'Dev')
             runDir("runs/client")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("runs/server")
         }
         datagen {
             inherit client

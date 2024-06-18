@@ -20,12 +20,13 @@ build
 
 # other
 eclipse
+*/runs/data/*
 */runs/server/*
 */runs/client/*
-*/runs/data/*
 !*/runs/client/options.txt
+!*/runs/client/config
+*/runs/client/config/*
+!*/runs/client/config/emi.css
 
-
-/fabric/src/generated/
-/neoforge/src/generated/
-/forge/src/generated/
+# generated resources
+*/src/generated/

@@ -4,19 +4,18 @@
     "version": "${version}",
     "name": "${mod_name}",
     "description": "${mod_description}",
-    "authors": [
-        "${mod_author}"
-    ],
+    "authors": [ "${mod_author}" ],
     "contact": {
-        "homepage": "https://github.com/Stein-N/Resource-Backpacks",
-        "sources": "https://github.com/Stein-N/Resource-Backpacks",
-        "issues": "https://github.com/Stein-N/Resource-Backpacks/issues"
+        "homepage": "https://github.com/Stein-N",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
     "license": "${mod_license}",
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
-        "main": [ "net.xstopho.resource_backpacks.ResourceBackpacks" ]
+        "main": [ "net.xstopho.resource_backpacks.ResourceBackpacks" ],
+        "client": [ "net.xstopho.resource_backpacks.ResourceBackpacksClient" ],
+        "fabric-datagen": [ "net.xstopho.resource_backpacks.ResourceBackpacksDatagen" ]
     },
     "mixins": [
         "${mod_id}.mixins.json",
@@ -26,9 +25,9 @@
         "fabric-api": "*",
         "fabricloader": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=21",
+        "java": "${java_version}",
 
-        "resourceconfigapi": ">=${resource_config_api}",
-        "resourcelibrary": ">=${resource_library}"
+        "resourceconfigapi": "${resource_config_api}",
+        "resourcelibrary": "${resource_library}"
     }
 }
