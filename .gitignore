@@ -22,9 +22,6 @@ build
 eclipse
 */run/*
 !*/run/options.txt
-!*/run/config
-*/run/config/*
-!*/run/config/emi.css
 
 # generated resources
 */src/generated/resources
