@@ -21,6 +21,8 @@ dependencies {
     commonResources project(path: ':common', configuration: 'commonResources')
 }
 
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 tasks.named('compileJava', JavaCompile) {
     dependsOn(configurations.commonJava)
     source(configurations.commonJava)
