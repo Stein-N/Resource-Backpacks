@@ -18,4 +18,8 @@ public class BackpackItem extends Item implements Equipable {
     public EquipmentSlot getEquipmentSlot() {
         return EquipmentSlot.CHEST;
     }
+
+    public BackpackLevel getLevel() {
+        return level;
+    }
 }
