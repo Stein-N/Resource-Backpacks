@@ -18,7 +18,7 @@ public enum BackpackLevel {
     BackpackLevel(int rows, int colums) {
         this.rows = rows;
         this.colums = colums;
-        this.guiTexture = ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "gui/backpack_" + this.toString().toLowerCase());
+        this.guiTexture = ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "gui/backpack_" + getName());
     }
 
     public int getColums() {
@@ -31,5 +31,9 @@ public enum BackpackLevel {
 
     public ResourceLocation getGuiTexture() {
         return guiTexture;
+    }
+
+    public String getName() {
+        return this.toString().toLowerCase();
     }
 }
