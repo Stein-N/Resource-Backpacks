@@ -12,7 +12,12 @@ public class ItemRegistry {
 
     private static final RegistryProvider<Item> ITEMS = RegistryProvider.get(BuiltInRegistries.ITEM, BackpackConstants.MOD_ID);
 
-
+    public static final RegistryObject<Item> BACKPACK_LEATHER = register("backpack_leather", BackpackLevel.LEATHER);
+    public static final RegistryObject<Item> BACKPACK_COPPER = register("backpack_copper", BackpackLevel.COPPER);
+    public static final RegistryObject<Item> BACKPACK_GOLD = register("backpack_gold", BackpackLevel.GOLD);
+    public static final RegistryObject<Item> BACKPACK_IRON = register("backpack_iron", BackpackLevel.IRON);
+    public static final RegistryObject<Item> BACKPACK_DIAMOND = register("backpack_diamond", BackpackLevel.DIAMOND);
+    public static final RegistryObject<Item> BACKPACK_NETHERITE = register("backpack_netherite", BackpackLevel.NETHERITE);
 
     private static RegistryObject<Item> register(String id, BackpackLevel level) {
         return ITEMS.register(id, () -> new BackpackItem(new Item.Properties(), level));

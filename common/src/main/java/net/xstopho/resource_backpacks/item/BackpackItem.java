@@ -10,13 +10,8 @@ public class BackpackItem extends Item implements Equipable {
     private final BackpackLevel level;
 
     public BackpackItem(Properties pProperties, BackpackLevel level) {
-        super(pProperties);
+        super(pProperties.stacksTo(1));
         this.level = level;
-    }
-
-    @Override
-    public int getDefaultMaxStackSize() {
-        return 1;
     }
 
     @Override
