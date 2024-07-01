@@ -1,6 +1,7 @@
 plugins {
     id 'ml-loader'
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'fabric-loom'
+    id 'me.modmuss50.mod-publish-plugin'
 }
 
 dependencies {
@@ -31,19 +32,12 @@ loom {
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
             programArgs('--username', 'Dev')
-            runDir("runs/client")
-        }
-        server {
-            server()
-            setConfigName("Fabric Server")
-            ideConfigGenerated(true)
-            runDir("runs/server")
         }
         datagen {
             inherit client
             name "Fabric Datagen"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated")}"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/generated/resources")}"
             vmArg "-Dfabric-api.datagen.modid=${mod_id}"
 
             runDir "build/datagen"
