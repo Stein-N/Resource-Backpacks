@@ -48,7 +48,7 @@ mouseSensitivity:0.2535211267605634
 damageTiltStrength:1.0
 highContrast:false
 narratorHotkey:true
-resourcePacks:[]
+resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:en_us
