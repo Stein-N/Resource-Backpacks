@@ -5,24 +5,24 @@ import net.xstopho.resource_backpacks.BackpackConstants;
 
 public enum BackpackLevel {
 
-    LEATHER(3, 11),
-    COPPER(3, 12),
-    GOLD(4, 12),
-    IRON(5, 12),
-    DIAMOND(7, 12),
-    NETHERITE(10, 12);
+    LEATHER(3, 11),     // 33 Slots
+    COPPER(3, 12),      // 36 Slots
+    GOLD(4, 12),        // 48 Slots
+    IRON(5, 12),        // 60 Slots
+    DIAMOND(7, 12),     // 84 Slots
+    NETHERITE(8, 13);   // 104 Slots
 
-    final int rows, colums;
+    final int rows, columns;
     final ResourceLocation guiTexture;
 
-    BackpackLevel(int rows, int colums) {
+    BackpackLevel(int rows, int columns) {
         this.rows = rows;
-        this.colums = colums;
-        this.guiTexture = ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "gui/backpack_" + getName());
+        this.columns = columns;
+        this.guiTexture = ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "textures/gui/container/backpack_" + getName() + ".png");
     }
 
-    public int getColums() {
-        return colums;
+    public int getColumns() {
+        return columns;
     }
 
     public int getRows() {
