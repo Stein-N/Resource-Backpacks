@@ -20,10 +20,6 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<OpenBackpackPacket> PACKET_TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "open_backpack_packet"));
     public static final StreamCodec<RegistryFriendlyByteBuf, OpenBackpackPacket> PACKET_CODEC;
 
-    public OpenBackpackPacket(int id) {
-        this.id = id;
-    }
-
     public static void apply(OpenBackpackPacket packet, IPayloadContext context) {
         context.enqueueWork(() -> {
             Player player = context.player();
@@ -53,11 +49,6 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
         return PACKET_TYPE;
-    }
-
-    @Override
-    public int id() {
-        return id;
     }
 
     static {
