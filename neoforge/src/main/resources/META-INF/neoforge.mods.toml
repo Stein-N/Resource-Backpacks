@@ -8,12 +8,10 @@ license = "${mod_license}"
     displayName = "${mod_name}"
     authors = "${mod_author}"
     description = '''${mod_description}'''
-    logoFile = "icon_large.png"
+    logoFile = "icon.png"
 
 [[mixins]]
     config = "${mod_id}.mixins.json"
-[[mixins]]
-    config = "${mod_id}.neoforge.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId = "neoforge"

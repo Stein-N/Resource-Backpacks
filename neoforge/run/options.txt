@@ -122,11 +122,6 @@ key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
 key_key.resource_backpacks.open_backpack:key.keyboard.r
-key_key.travelersbackpack.inventory:key.keyboard.b
-key_key.travelersbackpack.sort:key.keyboard.unknown
-key_key.travelersbackpack.ability:key.keyboard.unknown
-key_key.travelersbackpack.cycle_tool:key.keyboard.z
-key_key.travelersbackpack.toggle_tank:key.keyboard.n
 soundCategory_master:0.2533112582781457
 soundCategory_music:0.10915492957746478
 soundCategory_record:1.0
