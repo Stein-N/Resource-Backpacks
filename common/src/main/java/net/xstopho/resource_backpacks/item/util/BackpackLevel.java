@@ -5,6 +5,7 @@ import net.xstopho.resource_backpacks.BackpackConstants;
 
 public enum BackpackLevel {
 
+    // TODO: make them configurable through the Config
     LEATHER(3, 11),     // 33 Slots
     COPPER(3, 12),      // 36 Slots
     GOLD(4, 12),        // 48 Slots

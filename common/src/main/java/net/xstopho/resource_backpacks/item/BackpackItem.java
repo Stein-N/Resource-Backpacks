@@ -4,9 +4,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -14,7 +12,7 @@ import net.xstopho.resource_backpacks.item.util.BackpackInventory;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainer;
 
-public class BackpackItem extends Item implements Equipable {
+public class BackpackItem extends Item {
 
     private final BackpackLevel level;
     private final int rows, columns;
@@ -53,11 +51,6 @@ public class BackpackItem extends Item implements Equipable {
     @Override
     public boolean canFitInsideContainerItems() {
         return false;
-    }
-
-    @Override
-    public EquipmentSlot getEquipmentSlot() {
-        return EquipmentSlot.CHEST;
     }
 
     public BackpackLevel getLevel() {
