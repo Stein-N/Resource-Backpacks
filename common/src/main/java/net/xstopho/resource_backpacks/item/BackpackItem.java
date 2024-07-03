@@ -4,15 +4,18 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.util.BackpackInventory;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainer;
 
-public class BackpackItem extends Item {
+public class BackpackItem extends Item implements Equipable {
 
     private final BackpackLevel level;
     private final int rows, columns;
@@ -28,8 +31,7 @@ public class BackpackItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if (pPlayer.level().isClientSide) {
             return InteractionResultHolder.pass(pPlayer.getItemInHand(pUsedHand));
-        }
-        else {
+        } else {
             pPlayer.startUsingItem(pUsedHand);
             ItemStack stack = pPlayer.getItemInHand(pUsedHand);
             pPlayer.openMenu(getMenuProvider(stack));
@@ -37,7 +39,7 @@ public class BackpackItem extends Item {
         }
     }
 
-    private MenuProvider getMenuProvider(ItemStack stack) {
+    public MenuProvider getMenuProvider(ItemStack stack) {
         return switch(getLevel()) {
             case LEATHER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.leatherContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
             case COPPER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.copperContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
@@ -55,5 +57,11 @@ public class BackpackItem extends Item {
 
     public BackpackLevel getLevel() {
         return level;
+    }
+
+    @Override
+    public EquipmentSlot getEquipmentSlot() {
+        if (BackpackConfig.ALLOW_CHESTSLOT.get()) return EquipmentSlot.CHEST;
+        return null;
     }
 }

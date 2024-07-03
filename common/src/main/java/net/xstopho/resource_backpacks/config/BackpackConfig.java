@@ -24,7 +24,7 @@ public class BackpackConfig {
                 .comment("This is Disabled by Default").define("open_backpack_from_inventory", false);
         BUILDER.pop();
 
-        BUILDER.comment("This settings aren't implemented yet, so they have no effect on your gameplay!")
+        BUILDER.comment("These settings aren't implemented yet, so they have no effect on your gameplay!")
                 .push("Compatibility");
         ENABLE_TRINKETS = BUILDER.comment("Enables the Compatibility with the Trinkets API.")
                 .define("trinkets", false);

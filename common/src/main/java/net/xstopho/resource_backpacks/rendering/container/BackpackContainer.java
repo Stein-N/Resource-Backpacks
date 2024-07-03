@@ -92,14 +92,17 @@ public class BackpackContainer extends AbstractContainerMenu {
         }
     }
 
+    // Slot Index 9-35
     private void addInventorySlots(Container inventory) {
         for (int i = 0; i < 3; i++) {
             for (int y = 0; y < 9; y++) {
-                this.addSlot(new BackpackSlot(inventory, y + i * 9 + 9, xPos() + y * 18, yPos(25) + i * 18));
+                int index = y + i * 9 + 9;
+                this.addSlot(new BackpackSlot(inventory, index, xPos() + y * 18, yPos(25) + i * 18));
             }
         }
     }
 
+    // Slot index 0-8
     private void addHotbarSlots(Container inventory) {
         for (int i = 0; i < 9; i++) {
             this.addSlot(new BackpackSlot(inventory, i, xPos() + i * 18, yPos(83)));
