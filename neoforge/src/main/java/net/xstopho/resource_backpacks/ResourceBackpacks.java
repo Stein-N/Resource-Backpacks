@@ -1,6 +1,9 @@
 package net.xstopho.resource_backpacks;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -9,16 +12,21 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
+import net.xstopho.resource_backpacks.datagen.RecipeProv;
 import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
 import net.xstopho.resource_backpacks.util.BackpackKeyMappings;
 import net.xstopho.resource_config_api.api.ConfigRegistry;
+
+import java.util.concurrent.CompletableFuture;
 
 @Mod(BackpackConstants.MOD_ID)
 public class ResourceBackpacks {
@@ -43,6 +51,16 @@ public class ResourceBackpacks {
 
         public static void registerPackets(PayloadRegistrar registrar) {
             registrar.playToServer(OpenBackpackPacket.PACKET_TYPE, OpenBackpackPacket.PACKET_CODEC, OpenBackpackPacket::apply);
+        }
+
+        @SubscribeEvent
+        public static void data(GatherDataEvent event) {
+            DataGenerator generator = event.getGenerator();
+            PackOutput output = generator.getPackOutput();
+            ExistingFileHelper fileHelper = event.getExistingFileHelper();
+            CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
+
+            generator.addProvider(event.includeServer(), new RecipeProv(output, provider));
         }
     }
 
