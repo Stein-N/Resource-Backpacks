@@ -41,7 +41,7 @@ public class ResourceBackpacks {
     //-----------------------------------------------------------------//
     // Handles all Mod Events that are necessary for Client and Server
     //-----------------------------------------------------------------//
-    @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = BackpackConstants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
     public static class ResourceBackpacksEventHandler {
 
         @SubscribeEvent

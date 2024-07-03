@@ -18,7 +18,6 @@ neoForge {
     var at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) accessTransformers.add(at.absolutePath)
 
-
     parchment {
         minecraftVersion = minecraft_version
         mappingsVersion = parchment_version
@@ -34,6 +33,7 @@ neoForge {
         }
         data {
             data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
     }
     mods {
