@@ -15,7 +15,7 @@ prioritizeChunkUpdates:0
 fullscreen:true
 gamma:0.5
 graphicsMode:1
-guiScale:3
+guiScale:2
 maxFps:120
 mipmapLevels:4
 narrator:0
@@ -51,7 +51,7 @@ narratorHotkey:true
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
 lastServer:
-lang:en_us
+lang:de_de
 chatVisibility:0
 chatOpacity:1.0
 chatLineSpacing:0.0

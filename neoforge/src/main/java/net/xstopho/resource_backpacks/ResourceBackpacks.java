@@ -18,12 +18,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
-import net.xstopho.resource_backpacks.datagen.RecipeProv;
+import net.xstopho.resource_backpacks.datagen.Recipes;
 import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
+import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
-import net.xstopho.resource_backpacks.util.BackpackKeyMappings;
 import net.xstopho.resource_config_api.api.ConfigRegistry;
 
 import java.util.concurrent.CompletableFuture;
@@ -60,7 +60,7 @@ public class ResourceBackpacks {
             ExistingFileHelper fileHelper = event.getExistingFileHelper();
             CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 
-            generator.addProvider(event.includeServer(), new RecipeProv(output, provider));
+            generator.addProvider(event.includeServer(), new Recipes(output, provider));
         }
     }
 
@@ -82,7 +82,7 @@ public class ResourceBackpacks {
 
         @SubscribeEvent
         public static void initKeyMappings(RegisterKeyMappingsEvent event) {
-            event.register(BackpackKeyMappings.OPEN_BACKPACK);
+            event.register(KeyMappingRegistry.OPEN_BACKPACK);
         }
     }
 
@@ -96,7 +96,7 @@ public class ResourceBackpacks {
         public static void initClientTickEvent(ClientTickEvent.Post event) {
             Player player = Minecraft.getInstance().player;
             if (player != null) {
-                while (BackpackKeyMappings.OPEN_BACKPACK.consumeClick()) {
+                while (KeyMappingRegistry.OPEN_BACKPACK.consumeClick()) {
                     Minecraft client = Minecraft.getInstance();
                     PacketDistributor.sendToServer(new OpenBackpackPacket(1));
                 }

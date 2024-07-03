@@ -147,10 +147,12 @@ public class BackpackContainer extends AbstractContainerMenu {
     }
 
     @Override
-    public void removed(Player pPlayer) {
-        super.removed(pPlayer);
-        this.backpackInventory.stopOpen(pPlayer);
+    public void removed(Player player) {
+        super.removed(player);
+        this.backpackInventory.stopOpen(player);
     }
+
+
 
     public BackpackLevel getLevel() {
         return level;

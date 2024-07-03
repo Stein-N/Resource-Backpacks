@@ -1,0 +1,13 @@
+{
+  "item_group.resource_backpacks": "Resource Backpacks",
+
+  "category.resource_backpacks.controls": "Resource Backpacks",
+  "key.resource_backpacks.open_backpack": "Öffnen/Schließen des Rucksack Inventars",
+
+  "item.resource_backpacks.backpack_leather": "Lederrucksack",
+  "item.resource_backpacks.backpack_copper": "Kupferrucksack",
+  "item.resource_backpacks.backpack_gold": "Goldrucksack",
+  "item.resource_backpacks.backpack_iron": "Eisenrucksack",
+  "item.resource_backpacks.backpack_diamond": "Diamantrucksack",
+  "item.resource_backpacks.backpack_netherite": "Netheritrucksack"
+}

@@ -1,9 +1,9 @@
-package net.xstopho.resource_backpacks.util;
+package net.xstopho.resource_backpacks.registries;
 
 import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;
 
-public class BackpackKeyMappings {
+public class KeyMappingRegistry {
 
     private static final String KEYMAPPING_CATEGORY = "category.resource_backpacks.controls";
 

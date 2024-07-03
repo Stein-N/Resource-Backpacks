@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
-import net.xstopho.resource_backpacks.util.BackpackKeyMappings;
+import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 
 public class ResourceBackpacksClient implements ClientModInitializer {
 
@@ -27,7 +27,7 @@ public class ResourceBackpacksClient implements ClientModInitializer {
     }
 
     private void registerKeyMappings() {
-        KeyMapping openBackpack = KeyBindingHelper.registerKeyBinding(BackpackKeyMappings.OPEN_BACKPACK);
+        KeyMapping openBackpack = KeyBindingHelper.registerKeyBinding(KeyMappingRegistry.OPEN_BACKPACK);
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             Player player = client.player;
             if (player != null) {

@@ -1,0 +1,13 @@
+{
+  "item_group.resource_backpacks": "Resource Backpacks",
+
+  "category.resource_backpacks.controls": "Resource Backpacks",
+  "key.resource_backpacks.open_backpack": "Open/Close Backpack Inventory",
+
+  "item.resource_backpacks.backpack_leather": "Leather Backpack",
+  "item.resource_backpacks.backpack_copper": "Copper Backpack",
+  "item.resource_backpacks.backpack_gold": "Gold Backpack",
+  "item.resource_backpacks.backpack_iron": "Iron Backpack",
+  "item.resource_backpacks.backpack_diamond": "Diamond Backpack",
+  "item.resource_backpacks.backpack_netherite": "Netherite Backpack"
+}

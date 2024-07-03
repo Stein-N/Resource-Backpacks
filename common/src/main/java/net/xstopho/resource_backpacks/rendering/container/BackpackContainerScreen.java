@@ -7,17 +7,18 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 
 public class BackpackContainerScreen extends AbstractContainerScreen<BackpackContainer> {
 
     private final ResourceLocation texture;
     private final int rows, columns;
 
-    public BackpackContainerScreen(BackpackContainer pMenu, Inventory pPlayerInventory, Component pTitle) {
-        super(pMenu, pPlayerInventory, pTitle);
-        this.texture = pMenu.getLevel().getGuiTexture();
-        this.rows = pMenu.getLevel().getRows();
-        this.columns = pMenu.getLevel().getColumns();
+    public BackpackContainerScreen(BackpackContainer menu, Inventory playerInventory, Component title) {
+        super(menu, playerInventory, title);
+        this.texture = menu.getLevel().getGuiTexture();
+        this.rows = menu.getLevel().getRows();
+        this.columns = menu.getLevel().getColumns();
 
         this.imageWidth = getWidth();
         this.imageHeight = getHeight();
@@ -37,15 +38,15 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
     }
 
     @Override
-    public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-        this.renderBackground(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-        super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-        this.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+        this.renderBackground(guiGraphics, mouseX, mouseY, partialTicks);
+        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
-    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
-        pGuiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
     }
 
     private int getWidth() {
@@ -54,5 +55,12 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
 
     private int getHeight() {
         return 107 + (this.rows * 18);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (KeyMappingRegistry.OPEN_BACKPACK.matches(keyCode, scanCode)) this.onClose();
+
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 }
