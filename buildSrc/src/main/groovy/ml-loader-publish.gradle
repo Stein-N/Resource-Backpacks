@@ -16,6 +16,7 @@ publishMods {
         minecraftVersions.add("${minecraft_version}")
 
         requires('resource-library')
+        requires('resource-config-api')
     }
     curseforge {
         accessToken = CURSEFORGE_API_KEY
@@ -26,6 +27,7 @@ publishMods {
         serverRequired = true
 
         requires('resource-library')
+        requires('resource-config-api')
 
         javaVersions.add(JavaVersion.VERSION_21)
     }

@@ -8,11 +8,14 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
+import net.xstopho.resource_config_api.api.ConfigRegistry;
 
 @Mod(BackpackConstants.MOD_ID)
 public class ResourceBackpacks {
 
     public ResourceBackpacks() {
+        ConfigRegistry.register(BackpackConstants.MOD_ID, BackpackConfig.BUILDER);
+
         ItemRegistry.init();
         MenuTypeRegistry.init();
     }
