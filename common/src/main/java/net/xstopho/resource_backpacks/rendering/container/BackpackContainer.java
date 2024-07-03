@@ -1,6 +1,5 @@
 package net.xstopho.resource_backpacks.rendering.container;
 
-import com.google.common.collect.Sets;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -8,22 +7,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 
-import java.util.Set;
-
 public class BackpackContainer extends AbstractContainerMenu {
 
-    private BackpackLevel level;
-    private Container backpackInventory;
-    public static final Set<Item> SHULKER_BOXES = Sets.newHashSet(Items.SHULKER_BOX, Items.BLACK_SHULKER_BOX, Items.BLUE_SHULKER_BOX,
-            Items.BROWN_SHULKER_BOX, Items.CYAN_SHULKER_BOX, Items.GRAY_SHULKER_BOX, Items.GREEN_SHULKER_BOX, Items.LIGHT_BLUE_SHULKER_BOX,
-            Items.LIGHT_GRAY_SHULKER_BOX, Items.LIME_SHULKER_BOX, Items.MAGENTA_SHULKER_BOX, Items.ORANGE_SHULKER_BOX, Items.PINK_SHULKER_BOX,
-            Items.RED_SHULKER_BOX, Items.WHITE_SHULKER_BOX, Items.YELLOW_SHULKER_BOX, Items.PURPLE_SHULKER_BOX);
+    private final BackpackLevel level;
+    private final Container backpackInventory;
 
     private BackpackContainer(MenuType<?> menuType, int synId, Inventory playerInventory, BackpackLevel level) {
         this(menuType, synId, playerInventory, new SimpleContainer(level.getColumns() * level.getRows()), level);
@@ -126,8 +117,25 @@ public class BackpackContainer extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return null; //TODO: fix quick move currently it crashes
+    public ItemStack quickMoveStack(Player player, int index) {
+        ItemStack returnStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+        if (slot != null && slot.hasItem()) {
+            ItemStack stack = slot.getItem();
+            returnStack = stack.copy();
+            if (index < this.backpackInventory.getContainerSize()) {
+                if (!this.moveItemStackTo(stack, this.backpackInventory.getContainerSize(), this.slots.size(), true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.moveItemStackTo(stack, 0, this.backpackInventory.getContainerSize(), false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY);
+            else slot.setChanged();
+
+        }
+        return returnStack;
     }
 
     @Override
