@@ -8,6 +8,8 @@ public class BackpackConfig {
 
     public static final ConfigBuilder BUILDER = new ConfigBuilder();
 
+    public static final Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
+                                            IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
     public static final Supplier<Boolean> ALLOW_CHESTSLOT, CHESTSLOT_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
     public static final Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
 
@@ -21,7 +23,35 @@ public class BackpackConfig {
                 .define("chestslot_keybind", true);
         OPEN_BACKPACK_FROM_INVENTORY = BUILDER.comment("The first Backpack that is found in your Inventory will be opened via the keybind.")
                 .comment("Search Order -> Hotbar(left to right) -> Inventory(top left to bottom right)")
-                .comment("This is Disabled by Default").define("open_backpack_from_inventory", false);
+                .define("open_backpack_from_inventory", false);
+        BUILDER.pop();
+
+        BUILDER.comment("Change how big the backpack inventory is.")
+                .comment("Rows: 1 up to 25")
+                .comment("Columns: 10 up to 50")
+                .push("Leather Backpack");
+        LEATHER_ROWS = BUILDER.define("rows", 3);
+        LEATHER_COLUMNS = BUILDER.define("columns", 11);
+
+        BUILDER.pop().push("Copper Backpack");
+        COPPER_ROWS = BUILDER.define("rows", 3);
+        COPPER_COLUMNS = BUILDER.define("columns", 12);
+
+        BUILDER.pop().push("Gold Backpack");
+        GOLD_ROWS = BUILDER.define("rows", 4);
+        GOLD_COLUMNS = BUILDER.define("columns", 12);
+
+        BUILDER.pop().push("Iron Backpack");
+        IRON_ROWS = BUILDER.define("rows", 5);
+        IRON_COLUMNS = BUILDER.define("columns", 12);
+
+        BUILDER.pop().push("Diamond Backpack");
+        DIAMOND_ROWS = BUILDER.define("rows", 7);
+        DIAMOND_COLUMNS = BUILDER.define("columns", 12);
+
+        BUILDER.pop().push("Netherite Backpack");
+        NETHERITE_ROWS = BUILDER.define("rows", 8);
+        NETHERITE_COLUMNS = BUILDER.define("columns", 13);
         BUILDER.pop();
 
         BUILDER.comment("These settings aren't implemented yet, so they have no effect on your gameplay!")

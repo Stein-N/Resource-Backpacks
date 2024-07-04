@@ -51,7 +51,7 @@ narratorHotkey:true
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]
 lastServer:
-lang:de_de
+lang:en_us
 chatVisibility:0
 chatOpacity:1.0
 chatLineSpacing:0.0

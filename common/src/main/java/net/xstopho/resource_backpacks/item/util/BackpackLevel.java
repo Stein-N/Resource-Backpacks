@@ -1,37 +1,29 @@
 package net.xstopho.resource_backpacks.item.util;
 
-import net.minecraft.resources.ResourceLocation;
-import net.xstopho.resource_backpacks.BackpackConstants;
+import static net.xstopho.resource_backpacks.config.BackpackConfig.*;
 
 public enum BackpackLevel {
 
-    // TODO: make them configurable through the Config
-    LEATHER(3, 11),     // 33 Slots
-    COPPER(3, 12),      // 36 Slots
-    GOLD(4, 12),        // 48 Slots
-    IRON(5, 12),        // 60 Slots
-    DIAMOND(7, 12),     // 84 Slots
-    NETHERITE(8, 13);   // 104 Slots
+    LEATHER(LEATHER_ROWS.get(), LEATHER_COLUMNS.get()),
+    COPPER(COPPER_ROWS.get(), COPPER_COLUMNS.get()),
+    GOLD(GOLD_ROWS.get(), GOLD_COLUMNS.get()),
+    IRON(IRON_ROWS.get(), IRON_COLUMNS.get()),
+    DIAMOND(DIAMOND_ROWS.get(), DIAMOND_COLUMNS.get()),
+    NETHERITE(NETHERITE_ROWS.get(), NETHERITE_COLUMNS.get());
 
     final int rows, columns;
-    final ResourceLocation guiTexture;
 
     BackpackLevel(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        this.guiTexture = ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "textures/gui/container/backpack_" + getName() + ".png");
     }
 
     public int getColumns() {
-        return columns;
+        return Math.max(10, Math.min(50, columns));
     }
 
     public int getRows() {
-        return rows;
-    }
-
-    public ResourceLocation getGuiTexture() {
-        return guiTexture;
+        return Math.max(1, Math.min(25, rows));
     }
 
     public String getName() {
