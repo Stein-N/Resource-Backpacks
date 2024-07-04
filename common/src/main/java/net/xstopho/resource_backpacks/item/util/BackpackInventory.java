@@ -1,10 +1,10 @@
 package net.xstopho.resource_backpacks.item.util;
 
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.ItemContainerContents;
 import net.xstopho.resource_backpacks.api.ImplementedInventory;
+import net.xstopho.resource_backpacks.components.BackpackContainerContent;
+import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 
 public class BackpackInventory implements ImplementedInventory {
     private final ItemStack stack;
@@ -13,7 +13,7 @@ public class BackpackInventory implements ImplementedInventory {
     public BackpackInventory(ItemStack stack, int inventorySize) {
         this.items = NonNullList.withSize(inventorySize, ItemStack.EMPTY);
         this.stack = stack;
-        ItemContainerContents container = stack.get(DataComponents.CONTAINER);
+        BackpackContainerContent container = stack.get(DataComponentsRegistry.BACKPACK_CONTAINER.get());
         if (container != null) {
             container.copyInto(items);
         }
@@ -26,6 +26,6 @@ public class BackpackInventory implements ImplementedInventory {
 
     @Override
     public void setChanged() {
-        this.stack.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(items));
+        this.stack.set(DataComponentsRegistry.BACKPACK_CONTAINER.get(), BackpackContainerContent.fromItems(items));
     }
 }

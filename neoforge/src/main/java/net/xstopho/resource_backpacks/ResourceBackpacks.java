@@ -20,6 +20,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.datagen.Recipes;
 import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
+import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
 import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
@@ -33,6 +34,8 @@ public class ResourceBackpacks {
 
     public ResourceBackpacks() {
         ConfigRegistry.register(BackpackConstants.MOD_ID, BackpackConfig.BUILDER);
+
+        DataComponentsRegistry.init();
 
         ItemRegistry.init();
         MenuTypeRegistry.init();
