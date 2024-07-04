@@ -48,10 +48,10 @@ public class Recipes extends RecipeProvider {
                 .pattern("LLL").pattern("LCL").pattern("LLL")
                 .define('L', Items.DIAMOND).define('C', ItemRegistry.BACKPACK_IRON.get())
                 .unlockedBy(getHasName(ItemRegistry.BACKPACK_IRON.get()), has(ItemRegistry.BACKPACK_IRON.get()))
-                .save(output, location("backpacks/" + getSimpleRecipeName(ItemRegistry.BACKPACK_DIAMOND.get())));
+                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_DIAMOND.get())));
 
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(ItemRegistry.BACKPACK_DIAMOND.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.TOOLS, ItemRegistry.BACKPACK_NETHERITE.get())
+                        Ingredient.of(ItemRegistry.BACKPACK_DIAMOND.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.MISC, ItemRegistry.BACKPACK_NETHERITE.get())
                 .unlocks(getHasName(ItemRegistry.BACKPACK_DIAMOND.get()), has(ItemRegistry.BACKPACK_DIAMOND.get()))
                 .save(output, location("smithing/" + getSimpleRecipeName(ItemRegistry.BACKPACK_NETHERITE.get())));
     }

@@ -1,11 +1,6 @@
 #### v0.5.0-BETA
 - initial Release
 - adding 6 Backpacks
-  - Leather - 33 Slots
-  - Copper - 36 Slots
-  - Gold - 48 Slots
-  - Iron - 60 Slots
-  - Diamond - 84 Slots
-  - Netherite - 104 Slots
-- Configurable Keybind to open and close the Backpack
+  - Inventory size can be changed through the config file
+- Configurable keybind to open and close the Backpack
 - Backpack can be placed in the Chest Slot
