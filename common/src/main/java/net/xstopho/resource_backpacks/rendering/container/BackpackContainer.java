@@ -114,9 +114,9 @@ public class BackpackContainer extends AbstractContainerMenu {
     }
 
     private int xPos() {
-        if (level.getColumns() == 11) return 25;
-        if (level.getColumns() == 12) return 34;
-        return 43;
+        int containerWidth = (level.getColumns() * 18) + 12;
+        int playerInvWidth = 176;
+        return (containerWidth / 2) - (playerInvWidth / 2) + 8; // don't know why but 8 is the magical number
     }
 
     @Override
