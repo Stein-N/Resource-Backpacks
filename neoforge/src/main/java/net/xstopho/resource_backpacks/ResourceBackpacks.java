@@ -100,7 +100,6 @@ public class ResourceBackpacks {
             Player player = Minecraft.getInstance().player;
             if (player != null) {
                 while (KeyMappingRegistry.OPEN_BACKPACK.consumeClick()) {
-                    Minecraft client = Minecraft.getInstance();
                     PacketDistributor.sendToServer(new OpenBackpackPacket(1));
                 }
             }
