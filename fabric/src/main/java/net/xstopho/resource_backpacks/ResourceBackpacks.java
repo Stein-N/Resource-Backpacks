@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
+import net.xstopho.resource_backpacks.registries.CreativeTabRegistry;
 import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
@@ -19,6 +20,8 @@ public class ResourceBackpacks implements ModInitializer {
 
         ItemRegistry.init();
         MenuTypeRegistry.init();
+
+        CreativeTabRegistry.init();
 
         initServerPackets();
     }

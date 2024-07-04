@@ -15,7 +15,7 @@ prioritizeChunkUpdates:0
 fullscreen:true
 gamma:0.5
 graphicsMode:1
-guiScale:1
+guiScale:3
 maxFps:120
 mipmapLevels:4
 narrator:0
@@ -121,8 +121,8 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
-key_key.modmenu.open_menu:key.keyboard.unknown
 key_key.resource_backpacks.open_backpack:key.keyboard.r
+key_key.modmenu.open_menu:key.keyboard.unknown
 soundCategory_master:0.2533112582781457
 soundCategory_music:0.10915492957746478
 soundCategory_record:1.0

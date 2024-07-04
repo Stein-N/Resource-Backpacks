@@ -22,6 +22,7 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<OpenBackpackPacket> PACKET_TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "open_backpack_packet"));
     public static final StreamCodec<RegistryFriendlyByteBuf, OpenBackpackPacket> PACKET_CODEC;
 
+    // not the best fix but it works
     private static final List<Player> playerList = new ArrayList<>();
 
     public static void apply(OpenBackpackPacket packet, IPayloadContext context) {
