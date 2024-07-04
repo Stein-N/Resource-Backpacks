@@ -12,9 +12,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.xstopho.resource_backpacks.components.BackpackContainerContent;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.util.BackpackInventory;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
+import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainer;
 
 import java.util.List;
@@ -25,7 +27,7 @@ public class BackpackItem extends Item implements Equipable {
     private final int rows, columns;
 
     public BackpackItem(Properties properties, BackpackLevel level) {
-        super(properties.stacksTo(1));
+        super(properties.stacksTo(1).component(DataComponentsRegistry.BACKPACK_CONTAINER.get(), BackpackContainerContent.EMPTY));
         this.level = level;
         this.rows = level.getRows();
         this.columns = level.getColumns();
@@ -33,14 +35,12 @@ public class BackpackItem extends Item implements Equipable {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        if (player.level().isClientSide) {
-            return InteractionResultHolder.pass(player.getItemInHand(usedHand));
-        } else {
+        if (!player.level().isClientSide) {
             player.startUsingItem(usedHand);
             ItemStack stack = player.getItemInHand(usedHand);
             player.openMenu(getMenuProvider(stack));
-            return InteractionResultHolder.pass(player.getItemInHand(usedHand));
         }
+        return InteractionResultHolder.pass(player.getItemInHand(usedHand));
     }
 
     public MenuProvider getMenuProvider(ItemStack stack) {
