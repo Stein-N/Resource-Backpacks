@@ -1,3 +1,15 @@
+#### v0.5.2-BETA
+- fixing visual issues
+  - slots are 1 pixel off on left and right sides
+  - backpacks now can have at least 1 row and 9 columns
+- Changing the default values of backpack sizes(this haas no impact to already created configs)
+  - Leather 3 rows 9 columns
+  - Copper 3 rows 10 columns
+  - Gold 4 rows 11 columns
+  - Iron 5 rows 12 columns
+  - Diamond 6 rows 12 columns
+  - Netherite 7 rows 13 columns
+
 #### v0.5.1-BETA
 - Backpack can be opened via the Keybind when in Offhand
 - Backpacks can no longer be equipped inside the Chestslot when the Keybind is disabled in the Cofig
