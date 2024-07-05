@@ -19,7 +19,7 @@ public enum BackpackLevel {
     }
 
     public int getColumns() {
-        return Math.max(10, Math.min(50, columns));
+        return Math.max(9, Math.min(50, columns));
     }
 
     public int getRows() {

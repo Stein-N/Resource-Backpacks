@@ -70,10 +70,9 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
         // render slots
         for (int row = 0; row < this.rows; row++) {
             for (int column = 0; column < this.columns; column++) {
-                renderSlot(guiGraphics, xPos + 6 + (column * 18), yPos + 17 + (row * 18));
+                renderSlot(guiGraphics, xPos + 7 + (column * 18), yPos + 17 + (row * 18));
             }
         }
-
     }
 
     private void renderSlot(GuiGraphics guiGraphics, int xPos, int yPos) {
@@ -81,7 +80,9 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
     }
 
     private void renderPlayerInventory(GuiGraphics guiGraphics, int xPos, int yPos) {
-        guiGraphics.blit(BACKPACK_CONTAINER, xPos + ((getWidth() - 175) / 2), yPos + getHeight(20), 0, 22, 176, 87);
+        int vOffset = this.columns <= 9 ? 109 : 22;
+        int yOffset = this.columns <= 9 ? 19 : 20;
+        guiGraphics.blit(BACKPACK_CONTAINER, xPos + ((getWidth() - 175) / 2), yPos + getHeight(yOffset), 0, vOffset, 176, 87);
     }
 
     private void renderCorner(GuiGraphics guiGraphics, Corner type, int xPos, int yPos) {
@@ -103,7 +104,7 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
     }
 
     private int getWidth() {
-        return 12 + (this.columns * 18);
+        return 14 + (this.columns * 18);
     }
 
     // with player inv 107 only backpack 23

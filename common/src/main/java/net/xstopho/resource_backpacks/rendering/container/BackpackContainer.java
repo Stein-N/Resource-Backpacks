@@ -86,7 +86,7 @@ public class BackpackContainer extends AbstractContainerMenu {
         int index = 0;
         for (int i = 0; i < level.getRows(); i++) {
             for (int y = 0; y < level.getColumns(); y++) {
-                this.addSlot(new BackpackSlot(backpackInventory, index, 7 + y * 18, 18 + i * 18));
+                this.addSlot(new BackpackSlot(backpackInventory, index, 8 + y * 18, 18 + i * 18));
                 index++;
             }
         }
@@ -97,7 +97,7 @@ public class BackpackContainer extends AbstractContainerMenu {
         for (int i = 0; i < 3; i++) {
             for (int y = 0; y < 9; y++) {
                 int index = y + i * 9 + 9;
-                this.addSlot(new BackpackSlot(inventory, index, xPos() + y * 18, yPos(25) + i * 18));
+                this.addSlot(new BackpackSlot(inventory, index, xPos() + y * 18, yPos(24) + i * 18));
             }
         }
     }
@@ -105,7 +105,7 @@ public class BackpackContainer extends AbstractContainerMenu {
     // Slot index 0-8
     private void addHotbarSlots(Container inventory) {
         for (int i = 0; i < 9; i++) {
-            this.addSlot(new BackpackSlot(inventory, i, xPos() + i * 18, yPos(83)));
+            this.addSlot(new BackpackSlot(inventory, i, xPos() + i * 18, yPos(82)));
         }
     }
 
@@ -114,7 +114,7 @@ public class BackpackContainer extends AbstractContainerMenu {
     }
 
     private int xPos() {
-        int containerWidth = (level.getColumns() * 18) + 12;
+        int containerWidth = (level.getColumns() * 18) + 14;
         int playerInvWidth = 176;
         return (containerWidth / 2) - (playerInvWidth / 2) + 8; // don't know why but 8 is the magical number
     }
