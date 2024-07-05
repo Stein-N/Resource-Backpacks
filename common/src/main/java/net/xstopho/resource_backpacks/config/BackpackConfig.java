@@ -32,26 +32,26 @@ public class BackpackConfig {
                 .comment("Columns: 10 up to 50")
                 .push("Leather Backpack");
         LEATHER_ROWS = BUILDER.define("rows", 3);
-        LEATHER_COLUMNS = BUILDER.define("columns", 11);
+        LEATHER_COLUMNS = BUILDER.define("columns", 9);
 
         BUILDER.pop().push("Copper Backpack");
         COPPER_ROWS = BUILDER.define("rows", 3);
-        COPPER_COLUMNS = BUILDER.define("columns", 12);
+        COPPER_COLUMNS = BUILDER.define("columns", 10);
 
         BUILDER.pop().push("Gold Backpack");
         GOLD_ROWS = BUILDER.define("rows", 4);
-        GOLD_COLUMNS = BUILDER.define("columns", 12);
+        GOLD_COLUMNS = BUILDER.define("columns", 11);
 
         BUILDER.pop().push("Iron Backpack");
         IRON_ROWS = BUILDER.define("rows", 5);
         IRON_COLUMNS = BUILDER.define("columns", 12);
 
         BUILDER.pop().push("Diamond Backpack");
-        DIAMOND_ROWS = BUILDER.define("rows", 7);
+        DIAMOND_ROWS = BUILDER.define("rows", 6);
         DIAMOND_COLUMNS = BUILDER.define("columns", 12);
 
         BUILDER.pop().push("Netherite Backpack");
-        NETHERITE_ROWS = BUILDER.define("rows", 8);
+        NETHERITE_ROWS = BUILDER.define("rows", 7);
         NETHERITE_COLUMNS = BUILDER.define("columns", 13);
         BUILDER.pop();
 
