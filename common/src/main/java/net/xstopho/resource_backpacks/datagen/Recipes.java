@@ -6,6 +6,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
 
@@ -13,47 +14,38 @@ import java.util.concurrent.CompletableFuture;
 
 public class Recipes extends RecipeProvider {
 
+    private static RecipeOutput craftingOutput;
+
     public Recipes(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
         super(pOutput, pRegistries);
     }
 
     @Override
     public void buildRecipes(RecipeOutput output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_LEATHER.get(), 1)
-                .pattern("LLL").pattern("LCL").pattern("LLL")
-                .define('L', Items.LEATHER).define('C', Items.CHEST)
-                .unlockedBy(getHasName(Items.LEATHER), has(Items.LEATHER))
-                .unlockedBy(getHasName(Items.CHEST), has(Items.CHEST))
-                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_LEATHER.get())));
+        craftingOutput = output;
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_COPPER.get(), 1)
-                .pattern("LLL").pattern("LCL").pattern("LLL")
-                .define('L', Items.COPPER_INGOT).define('C', ItemRegistry.BACKPACK_LEATHER.get())
-                .unlockedBy(getHasName(ItemRegistry.BACKPACK_LEATHER.get()), has(ItemRegistry.BACKPACK_LEATHER.get()))
-                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_COPPER.get())));
+        createBackpackCraftingRecipe(Items.CHEST, Items.LEATHER, ItemRegistry.BACKPACK_LEATHER.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_LEATHER.get(), Items.COPPER_INGOT, ItemRegistry.BACKPACK_COPPER.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_COPPER.get(), Items.GOLD_INGOT, ItemRegistry.BACKPACK_GOLD.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_GOLD.get(), Items.IRON_INGOT, ItemRegistry.BACKPACK_IRON.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_IRON.get(), Items.DIAMOND, ItemRegistry.BACKPACK_DIAMOND.get());
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_GOLD.get(), 1)
-                .pattern("LLL").pattern("LCL").pattern("LLL")
-                .define('L', Items.GOLD_INGOT).define('C', ItemRegistry.BACKPACK_COPPER.get())
-                .unlockedBy(getHasName(ItemRegistry.BACKPACK_COPPER.get()), has(ItemRegistry.BACKPACK_COPPER.get()))
-                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_GOLD.get())));
+        createBackpackSmithingRecipe(ItemRegistry.BACKPACK_DIAMOND.get(), Items.NETHERITE_INGOT, ItemRegistry.BACKPACK_NETHERITE.get());
+    }
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_IRON.get(), 1)
-                .pattern("LLL").pattern("LCL").pattern("LLL")
-                .define('L', Items.IRON_INGOT).define('C', ItemRegistry.BACKPACK_GOLD.get())
-                .unlockedBy(getHasName(ItemRegistry.BACKPACK_GOLD.get()), has(ItemRegistry.BACKPACK_GOLD.get()))
-                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_IRON.get())));
+    private void createBackpackCraftingRecipe(ItemLike input, ItemLike upgradeMaterial, ItemLike output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, 1)
+                .pattern("UUU").pattern("UIU").pattern("UUU")
+                .define('U', upgradeMaterial).define('I', input)
+                .unlockedBy(getHasName(input), has(input))
+                .save(craftingOutput, location("crafting/" + getSimpleRecipeName(output)));
+    }
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_DIAMOND.get(), 1)
-                .pattern("LLL").pattern("LCL").pattern("LLL")
-                .define('L', Items.DIAMOND).define('C', ItemRegistry.BACKPACK_IRON.get())
-                .unlockedBy(getHasName(ItemRegistry.BACKPACK_IRON.get()), has(ItemRegistry.BACKPACK_IRON.get()))
-                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_DIAMOND.get())));
-
+    private void createBackpackSmithingRecipe(ItemLike input, ItemLike upgradeMaterial, ItemLike output) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(ItemRegistry.BACKPACK_DIAMOND.get()), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.MISC, ItemRegistry.BACKPACK_NETHERITE.get())
-                .unlocks(getHasName(ItemRegistry.BACKPACK_DIAMOND.get()), has(ItemRegistry.BACKPACK_DIAMOND.get()))
-                .save(output, location("smithing/" + getSimpleRecipeName(ItemRegistry.BACKPACK_NETHERITE.get())));
+                Ingredient.of(input), Ingredient.of(upgradeMaterial), RecipeCategory.MISC, output.asItem())
+                .unlocks(getHasName(input), has(input))
+                .save(craftingOutput, location("smithing/" + getSimpleRecipeName(output)));
     }
 
     private ResourceLocation location(String id) {
