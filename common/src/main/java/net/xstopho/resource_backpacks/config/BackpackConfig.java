@@ -16,20 +16,21 @@ public class BackpackConfig {
     static {
         BUILDER.push("General");
         ALLOW_CHESTSLOT = BUILDER.comment("Enable the ability to equip the Backpack to your Chestslot.")
-                .comment("When the Server you are playing on set this to false, your local setting is ignored!")
+                .comment("When a Server set this to false, your local setting is ignored!")
                 .define("enable_chestslot", true);
         ENABLE_BACKPACK_KEYBIND = BUILDER.comment("Backpacks can be opened via a keybind.")
                 .comment("When set to false the allow_chestslot setting gets overwritten.")
-                .comment("default key is B, but can be changed in the Controls Settings.")
+                .comment("Default key is B, but can be changed in the Controls Settings.")
                 .define("enable_backpack_keybind", true);
-        OPEN_BACKPACK_FROM_INVENTORY = BUILDER.comment("The first Backpack that is found in your Inventory will be opened via the keybind.")
-                .comment("Search Order -> Inventory -> Hotbar")
+        OPEN_BACKPACK_FROM_INVENTORY = BUILDER.comment("The first Backpack that is found in your inventory will be opened via the keybind.")
+                .comment("Search order -> inventory -> hotbar")
                 .define("open_backpack_from_inventory", false);
         BUILDER.pop();
 
         BUILDER.comment("Change how big the backpack inventory is.")
                 .comment("Rows: 1 up to 25")
-                .comment("Columns: 10 up to 50")
+                .comment("Columns: 9 up to 50")
+                .comment("max slots: 1250")
                 .push("Leather Backpack");
         LEATHER_ROWS = BUILDER.define("rows", 3);
         LEATHER_COLUMNS = BUILDER.define("columns", 9);
