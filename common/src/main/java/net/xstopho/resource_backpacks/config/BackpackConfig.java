@@ -10,7 +10,7 @@ public class BackpackConfig {
 
     public static final Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
                                             IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
-    public static final Supplier<Boolean> ALLOW_CHESTSLOT, CHESTSLOT_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
+    public static final Supplier<Boolean> ALLOW_CHESTSLOT, ENABLE_BACKPACK_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
     public static final Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
 
     static {
@@ -18,11 +18,12 @@ public class BackpackConfig {
         ALLOW_CHESTSLOT = BUILDER.comment("Enable the ability to equip the Backpack to your Chestslot.")
                 .comment("When the Server you are playing on set this to false, your local setting is ignored!")
                 .define("enable_chestslot", true);
-        CHESTSLOT_KEYBIND = BUILDER.comment("Backpacks can be opened via a keybind when equipped in the chestslot.")
+        ENABLE_BACKPACK_KEYBIND = BUILDER.comment("Backpacks can be opened via a keybind.")
+                .comment("When set to false the allow_chestslot setting gets overwritten.")
                 .comment("default key is B, but can be changed in the Controls Settings.")
-                .define("chestslot_keybind", true);
+                .define("enable_backpack_keybind", true);
         OPEN_BACKPACK_FROM_INVENTORY = BUILDER.comment("The first Backpack that is found in your Inventory will be opened via the keybind.")
-                .comment("Search Order -> Hotbar(left to right) -> Inventory(top left to bottom right)")
+                .comment("Search Order -> Inventory -> Hotbar")
                 .define("open_backpack_from_inventory", false);
         BUILDER.pop();
 

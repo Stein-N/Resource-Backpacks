@@ -65,7 +65,7 @@ public class BackpackItem extends Item implements Equipable {
 
     @Override
     public EquipmentSlot getEquipmentSlot() {
-        if (BackpackConfig.ALLOW_CHESTSLOT.get()) return EquipmentSlot.CHEST;
+        if (BackpackConfig.ALLOW_CHESTSLOT.get() && BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) return EquipmentSlot.CHEST;
         return null;
     }
 
