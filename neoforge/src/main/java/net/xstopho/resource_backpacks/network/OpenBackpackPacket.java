@@ -26,27 +26,34 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     private static final List<Player> playerList = new ArrayList<>();
 
     public static void apply(OpenBackpackPacket packet, IPayloadContext context) {
-        context.player().getServer().execute(() -> {
+        context.enqueueWork(() -> {
             Player player = context.player();
             Inventory inventory = player.getInventory();
             ItemStack chestStack = inventory.getArmor(EquipmentSlot.CHEST.getIndex());
+            ItemStack offhandStack = player.getOffhandItem();
 
             if (!playerList.contains(player)) {
-                if (BackpackConfig.CHESTSLOT_KEYBIND.get()) {
+                if (BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) {
                     if (chestStack.getItem() instanceof BackpackItem backpack) {
                         player.openMenu(backpack.getMenuProvider(chestStack));
                         playerList.add(player);
                         return;
                     }
-                }
 
-                if (BackpackConfig.OPEN_BACKPACK_FROM_INVENTORY.get()) {
-                    for (ItemStack stack : inventory.items) {
-                        if (stack.getItem() instanceof BackpackItem backpackItem) {
-                            player.openMenu(backpackItem.getMenuProvider(stack));
-                            playerList.add(player);
-                            return;
+                    if (offhandStack.getItem() instanceof BackpackItem offhandBackpack) {
+                        player.openMenu(offhandBackpack.getMenuProvider(offhandStack));
+                        playerList.add(player);
+                        return;
+                    }
+
+                    if (BackpackConfig.OPEN_BACKPACK_FROM_INVENTORY.get()) {
+                        for (ItemStack stack : inventory.items) {
+                            if (stack.getItem() instanceof BackpackItem backpackItem) {
+                                player.openMenu(backpackItem.getMenuProvider(stack));
+                            }
                         }
+                        playerList.add(player);
+                        return;
                     }
                 }
             }
