@@ -9,7 +9,7 @@ public class BackpackConfig {
     public static final ConfigBuilder BUILDER = new ConfigBuilder();
 
     public static Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
-                                            IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
+                                    IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
     public static Supplier<Boolean> ALLOW_CHESTSLOT, ENABLE_BACKPACK_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
     public static Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
 
@@ -31,6 +31,7 @@ public class BackpackConfig {
                 .comment("Rows: 1 up to 25")
                 .comment("Columns: 9 up to 50")
                 .comment("max slots: 1250")
+                .comment("Local Settings get overwritten with the server settings.")
                 .push("Leather Backpack");
         LEATHER_ROWS = BUILDER.define("rows", 3);
         LEATHER_COLUMNS = BUILDER.define("columns", 9);

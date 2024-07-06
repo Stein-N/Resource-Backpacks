@@ -56,9 +56,7 @@ public interface ImplementedInventory extends WorldlyContainer {
     default boolean isEmpty() {
         for(int i = 0; i < this.getContainerSize(); ++i) {
             ItemStack stack = this.getItem(i);
-            if (!stack.isEmpty()) {
-                return false;
-            }
+            if (!stack.isEmpty()) return false;
         }
 
         return true;

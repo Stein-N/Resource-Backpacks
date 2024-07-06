@@ -57,7 +57,6 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
                     }
                 }
             }
-
             playerList.remove(player);
         });
     }

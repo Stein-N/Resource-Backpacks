@@ -28,8 +28,6 @@ public class NeoForgeClientEventHandler {
 
     @SubscribeEvent
     public static void registerServerDisconnectEvents(ClientPlayerNetworkEvent.LoggingOut event) {
-        for (BackpackLevel level : BackpackLevel.values()) {
-            level.resetValues();
-        }
+        for (BackpackLevel level : BackpackLevel.values()) level.resetValues();
     }
 }
