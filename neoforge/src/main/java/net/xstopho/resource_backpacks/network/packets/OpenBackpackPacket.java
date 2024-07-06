@@ -1,4 +1,4 @@
-package net.xstopho.resource_backpacks.network;
+package net.xstopho.resource_backpacks.network.packets;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

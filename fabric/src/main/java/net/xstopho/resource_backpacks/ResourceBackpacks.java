@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
-import net.xstopho.resource_backpacks.network.packets.SyncBackpackInventorySettingsPacket;
+import net.xstopho.resource_backpacks.network.packets.SyncBackpackLevelPacket;
 import net.xstopho.resource_backpacks.registries.CreativeTabRegistry;
 import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
@@ -34,7 +34,7 @@ public class ResourceBackpacks implements ModInitializer {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             BackpackConstants.LOG.info("Sync Backpack Level Settings with Client.");
             for (BackpackLevel level : BackpackLevel.values()) {
-                sender.sendPacket(new SyncBackpackInventorySettingsPacket(level.getName(), level.getRows(), level.getColumns()));
+                sender.sendPacket(new SyncBackpackLevelPacket(level.getName(), level.getRows(), level.getColumns()));
             }
         });
 
