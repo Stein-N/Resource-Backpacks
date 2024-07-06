@@ -8,8 +8,6 @@ base {
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(java_version)
-    withSourcesJar()
-    withJavadocJar()
 }
 
 repositories {
@@ -23,10 +21,6 @@ repositories {
 
 dependencies {
     implementation 'org.jetbrains:annotations:24.1.0'
-}
-
-tasks.named('javadoc', Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
 }
 
 ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
