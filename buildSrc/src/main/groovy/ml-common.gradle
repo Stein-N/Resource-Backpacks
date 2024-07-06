@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.jetbrains:annotations:24.1.0'
 }
 
-['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
+['apiElements', 'runtimeElements'].each { variant ->
     configurations."$variant".outgoing {
         capability("$group:${base.archivesName.get()}:$version")
         capability("$group:$mod_id-${project.name}-${minecraft_version}:$version")
@@ -46,12 +46,6 @@ jar {
                 'Implementation-Vendor' : mod_author,
                 'Built-On-Minecraft'    : minecraft_version
         ])
-    }
-}
-
-sourcesJar {
-    from(rootProject.file("LICENSE")) {
-        rename { "${it}_${mod_name}" }
     }
 }
 
