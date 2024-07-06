@@ -1,3 +1,6 @@
+#### v0.5.3-BETA
+- Backpack Settings get synced between client and server
+
 #### v0.5.2-BETA
 - fixing visual issues
   - slots are 1 pixel off on left and right sides
