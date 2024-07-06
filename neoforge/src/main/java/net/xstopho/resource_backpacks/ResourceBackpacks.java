@@ -1,6 +1,10 @@
 package net.xstopho.resource_backpacks;
 
+import com.misterpemodder.shulkerboxtooltip.api.neoforge.ShulkerBoxTooltipPlugin;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
+import net.xstopho.resource_backpacks.compat.shulkerboxtooltip.BackpackTooltipPlugin;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.registries.CreativeTabRegistry;
 import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
@@ -20,5 +24,10 @@ public class ResourceBackpacks {
         MenuTypeRegistry.init();
 
         CreativeTabRegistry.init();
+
+        if (ModList.get().isLoaded("shulkerboxtooltip")) {
+            ModLoadingContext.get().registerExtensionPoint(ShulkerBoxTooltipPlugin.class,
+                    () -> new ShulkerBoxTooltipPlugin(BackpackTooltipPlugin::new));
+        }
     }
 }

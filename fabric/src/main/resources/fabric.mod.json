@@ -15,7 +15,8 @@
     "entrypoints": {
         "main": [ "net.xstopho.resource_backpacks.ResourceBackpacks" ],
         "client": [ "net.xstopho.resource_backpacks.ResourceBackpacksClient" ],
-        "fabric-datagen": [ "net.xstopho.resource_backpacks.ResourceBackpacksDatagen" ]
+        "fabric-datagen": [ "net.xstopho.resource_backpacks.ResourceBackpacksDatagen" ],
+        "shulkerboxtooltip": [ "net.xstopho.resource_backpacks.compat.shulkerboxtooltip.BackpackTooltipPlugin" ]
     },
     "mixins": [ "${mod_id}.mixins.json" ],
     "depends": {
@@ -26,5 +27,8 @@
 
         "resourceconfigapi": "${resource_config_api}",
         "resourcelibrary": "${resource_library}"
+    },
+    "suggests": {
+        "shulkerboxtooltip": ">=${shulkerboxtooltip}"
     }
 }
