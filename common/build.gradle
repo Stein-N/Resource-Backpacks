@@ -21,8 +21,6 @@ dependencies {
 
     implementation "net.xstopho.resourceconfigapi:resourceconfigapi-common:${resource_config_api}"
     implementation "net.xstopho.resourcelibrary:resourcelibrary-common:${resource_library}"
-
-    compileOnly "io.wispforest:accessories-common:${accessories}+${minecraft_version}"
 }
 
 configurations {
