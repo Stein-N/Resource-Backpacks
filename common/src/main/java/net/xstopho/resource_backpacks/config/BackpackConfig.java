@@ -8,10 +8,10 @@ public class BackpackConfig {
 
     public static final ConfigBuilder BUILDER = new ConfigBuilder();
 
-    public static final Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
+    public static Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
                                             IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
-    public static final Supplier<Boolean> ALLOW_CHESTSLOT, ENABLE_BACKPACK_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
-    public static final Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
+    public static Supplier<Boolean> ALLOW_CHESTSLOT, ENABLE_BACKPACK_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
+    public static Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
 
     static {
         BUILDER.push("General");
