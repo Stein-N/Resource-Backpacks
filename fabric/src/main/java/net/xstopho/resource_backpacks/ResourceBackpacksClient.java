@@ -7,7 +7,8 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.player.Player;
-import net.xstopho.resource_backpacks.network.OpenBackpackPacket;
+import net.xstopho.resource_backpacks.network.BackpackNetwork;
+import net.xstopho.resource_backpacks.network.packets.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
 import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
@@ -16,6 +17,8 @@ public class ResourceBackpacksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        BackpackNetwork.initClient();
+
         MenuScreens.register(MenuTypeRegistry.LEATHER_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.COPPER_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.GOLD_BACKPACK_MENU.get(), BackpackContainerScreen::new);

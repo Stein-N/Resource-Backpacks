@@ -1,4 +1,4 @@
-package net.xstopho.resource_backpacks.network;
+package net.xstopho.resource_backpacks.network.packets;
 
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.RegistryFriendlyByteBuf;
