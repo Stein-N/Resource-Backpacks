@@ -8,7 +8,7 @@
 - fixing visual issues
   - slots are 1 pixel off on left and right sides
   - backpacks now can have at least 1 row and 9 columns
-- Changing the default values of backpack sizes(this haas no impact to already created configs)
+- Changing the default values of backpack sizes(this has no impact to already created configs)
   - Leather 3 rows 9 columns
   - Copper 3 rows 10 columns
   - Gold 4 rows 11 columns
