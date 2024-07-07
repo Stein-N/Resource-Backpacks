@@ -20,7 +20,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> BACKPACK_NETHERITE = register(BackpackLevel.NETHERITE);
 
     private static RegistryObject<Item> register(BackpackLevel level) {
-        return ITEMS.register("backpack_" + level.getName(), () -> new BackpackItem(new Item.Properties(), level));
+        Item.Properties properties = level.equals(BackpackLevel.NETHERITE) ? new Item.Properties().fireResistant() : new Item.Properties();
+        return ITEMS.register("backpack_" + level.getName(), () -> new BackpackItem(properties, level));
     }
 
     public static void init() {};
