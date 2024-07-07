@@ -1,4 +1,7 @@
-#### v.0.5.4-BETA
+#### v0.5.5-BETA
+- Fix: 2x2 Crafting wasn't usable
+
+#### v0.5.4-BETA
 - adding Shulker Box Tooltip compatibility
 
 #### v0.5.3-BETA
