@@ -14,9 +14,12 @@ When you have a Backpack in your Inventory and press 'B' the first Backpack, tha
 The Backpacks and Mod behavior itself are configurable through the 'config/resource_backpacks.toml' file, which is located in your game directory.<br>
 In  there you can change the Inventory Size of every Backpack or if the Backpacks are equipable in the Chest slot.
 
-### Compatibility(Not implemented yet)
-Backpacks are fully compatible with Trinkets, Curios API or the Accessories API. <br>
-When you want to preview your Backpacks install ShulkerBoxTooltip.
+### Compatibility
+When you want to preview your Backpacks install ShulkerBoxTooltip.<br>
+
+NOT IMPLEMENTED YET:<br>
+Backpacks are fully compatible with Trinkets, Curios API or the Accessories API.
+
 
 ### License and Modpack Info
 This Mod is Licensed under the MIT License.<br>
