@@ -3,10 +3,12 @@ package net.xstopho.resource_backpacks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.player.Player;
+import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
 import net.xstopho.resource_backpacks.network.packets.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
@@ -19,6 +21,8 @@ public class ResourceBackpacksClient implements ClientModInitializer {
     public void onInitializeClient() {
         BackpackNetwork.initClient();
 
+        registerKeyMappings();
+
         MenuScreens.register(MenuTypeRegistry.LEATHER_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.COPPER_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.GOLD_BACKPACK_MENU.get(), BackpackContainerScreen::new);
@@ -26,7 +30,11 @@ public class ResourceBackpacksClient implements ClientModInitializer {
         MenuScreens.register(MenuTypeRegistry.DIAMOND_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.NETHERITE_BACKPACK_MENU.get(), BackpackContainerScreen::new);
 
-        registerKeyMappings();
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
+            for (BackpackLevel level : BackpackLevel.values()) {
+                level.resetValues();
+            }
+        });
     }
 
     private void registerKeyMappings() {

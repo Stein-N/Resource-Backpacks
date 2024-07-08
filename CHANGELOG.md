@@ -1,3 +1,6 @@
+#### v0.5.6-BETA
+- fixing an issue where client code causes the server to crash
+
 #### v0.5.5-BETA
 - Fix: 2x2 Crafting wasn't usable
 

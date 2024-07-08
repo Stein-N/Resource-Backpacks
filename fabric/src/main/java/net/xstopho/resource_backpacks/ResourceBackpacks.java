@@ -27,20 +27,10 @@ public class ResourceBackpacks implements ModInitializer {
 
         CreativeTabRegistry.init();
 
-        updateBackpackSettings();
-    }
-
-    private void updateBackpackSettings() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             BackpackConstants.LOG.info("Sync Backpack Level Settings with Client.");
             for (BackpackLevel level : BackpackLevel.values()) {
                 sender.sendPacket(new SyncBackpackLevelPacket(level.getName(), level.getRows(), level.getColumns()));
-            }
-        });
-
-        ClientPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            for (BackpackLevel level : BackpackLevel.values()) {
-                level.resetValues();
             }
         });
     }
