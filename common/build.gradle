@@ -23,6 +23,7 @@ dependencies {
     compileOnly "net.xstopho.resourcelibrary:resourcelibrary-common:${resource_library}"
 
     compileOnly "com.misterpemodder:shulkerboxtooltip-common-mojmap:${shulker_box_tooltip}+${minecraft_version}"
+    compileOnly "io.wispforest:accessories-common:${accessories}-mojmap"
 }
 
 configurations {

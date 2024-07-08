@@ -1,3 +1,5 @@
+import net.neoforged.moddevgradle.dsl.RunModel
+
 plugins {
     id 'ml-loader'
     id 'net.neoforged.moddev'
@@ -5,9 +7,12 @@ plugins {
 }
 
 dependencies {
-    implementation "com.misterpemodder:shulkerboxtooltip-neoforge:${shulker_box_tooltip}+${minecraft_version}"
     implementation "net.xstopho.resourceconfigapi:resourceconfigapi-neoforge:${resource_config_api}"
     implementation "net.xstopho.resourcelibrary:resourcelibrary-neoforge:${resource_library}"
+
+    implementation "com.misterpemodder:shulkerboxtooltip-neoforge:${shulker_box_tooltip}+${minecraft_version}"
+    implementation "io.wispforest:accessories-neoforge:${accessories}"
+
 
     // Runtime Mods
     runtimeOnly "maven.modrinth:emi:${emi}+${minecraft_version}+neoforge"
@@ -28,9 +33,13 @@ neoForge {
         configureEach {
             systemProperty('neoforge.enableGameTestNamespaces', mod_id)
             ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+            gameDirectory = project.file("runs/${it.name.toLowerCase()}")
         }
         client {
             client()
+        }
+        server {
+            server()
         }
         data {
             data()
