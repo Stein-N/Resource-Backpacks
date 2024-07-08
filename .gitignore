@@ -20,8 +20,10 @@ build
 
 # other
 eclipse
-*/run/*
-!*/run/options.txt
+*/runs/server/*
+*/runs/client/*
+*/runs/data/*
+!*/runs/client/options.txt
 
 # generated resources
 */src/generated/resources
