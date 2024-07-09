@@ -30,5 +30,10 @@
     },
     "suggests": {
         "shulkerboxtooltip": ">=${shulkerboxtooltip}"
+    },
+    "custom": {
+        "modmenu": {
+            "update-checker": true
+        }
     }
 }
