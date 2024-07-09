@@ -7,15 +7,18 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.entity.player.Player;
+import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
 import net.xstopho.resource_backpacks.network.packets.OpenBackpackPacket;
+import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
-import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
+import net.xstopho.resourcelibrary.service.CoreServices;
 
 public class ResourceBackpacksClient implements ClientModInitializer {
+
+    private final KeyMapping openBackpack = KeyBindingHelper.registerKeyBinding(KeyMappingRegistry.OPEN_BACKPACK);
 
     @Override
     public void onInitializeClient() {
@@ -35,15 +38,19 @@ public class ResourceBackpacksClient implements ClientModInitializer {
                 level.resetValues();
             }
         });
+
+        AccessoriesHelper.initClient();
+
+        if (CoreServices.isModLoaded("trinkets")) registerTrinkets();
     }
 
     private void registerKeyMappings() {
-        KeyMapping openBackpack = KeyBindingHelper.registerKeyBinding(KeyMappingRegistry.OPEN_BACKPACK);
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            Player player = client.player;
-            if (player != null) {
-                if (openBackpack.consumeClick()) ClientPlayNetworking.send(new OpenBackpackPacket(1));
-            }
+            if (openBackpack.consumeClick()) ClientPlayNetworking.send(new OpenBackpackPacket(1));
         });
+    }
+
+    private void registerTrinkets() {
+
     }
 }

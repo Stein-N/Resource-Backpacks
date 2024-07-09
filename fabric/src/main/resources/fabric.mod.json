@@ -25,8 +25,8 @@
         "minecraft": "${minecraft_version}",
         "java": "${java_version}",
 
-        "resourceconfigapi": "${resource_config_api}",
-        "resourcelibrary": "${resource_library}"
+        "resourceconfigapi": ">=${resource_config_api}",
+        "resourcelibrary": ">=${resource_library}"
     },
     "suggests": {
         "shulkerboxtooltip": ">=${shulkerboxtooltip}"

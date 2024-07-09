@@ -5,14 +5,17 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.xstopho.resource_backpacks.BackpackConstants;
+import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.BackpackItem;
+import net.xstopho.resourcelibrary.service.CoreServices;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -34,6 +37,15 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
 
             if (!playerList.contains(player)) {
                 if (BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) {
+                    if (CoreServices.isModLoaded("accessories")) {
+                        ItemStack backStack = AccessoriesHelper.getEquippedBackpack((ServerPlayer) player);
+                        if (backStack.getItem() instanceof BackpackItem backpack) {
+                            player.openMenu(backpack.getMenuProvider(backStack));
+                            playerList.add(player);
+                            return;
+                        }
+                    }
+
                     if (chestStack.getItem() instanceof BackpackItem backpack) {
                         player.openMenu(backpack.getMenuProvider(chestStack));
                         playerList.add(player);

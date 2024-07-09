@@ -122,7 +122,7 @@ key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
 key_accessories.key.open_accessories_screen:key.keyboard.h
-key_key.resource_backpacks.open_backpack:key.keyboard.b
+key_key.resource_backpacks.open_backpack:key.keyboard.r
 soundCategory_master:0.2533112582781457
 soundCategory_music:0.10915492957746478
 soundCategory_record:1.0

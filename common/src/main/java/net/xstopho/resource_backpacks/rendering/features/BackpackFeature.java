@@ -31,9 +31,7 @@ public class BackpackFeature extends RenderLayer<AbstractClientPlayer, PlayerMod
         ItemStack chestSlot = player.getItemBySlot(EquipmentSlot.CHEST);
         Item chestItem = chestSlot.getItem();
 
-        if (chestItem instanceof BackpackItem backpack) {
-            BackpackLevel level = backpack.getLevel();
-
+        if (chestItem instanceof BackpackItem) {
             poseStack.pushPose();
             poseStack.mulPose(Axis.XP.rotationDegrees(180));
             poseStack.translate(0, -0.29, -0.25);
@@ -42,7 +40,6 @@ public class BackpackFeature extends RenderLayer<AbstractClientPlayer, PlayerMod
                 poseStack.mulPose(Axis.XP.rotationDegrees(29));
                 poseStack.translate(0, -0.1, -0.072);
             }
-            VertexConsumer consumer = multiBufferSource.getBuffer(RenderType.solid());
             Minecraft.getInstance().getItemRenderer().renderStatic(chestSlot, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, player.clientLevel, 0);
             poseStack.popPose();
         }

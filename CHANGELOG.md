@@ -1,3 +1,8 @@
+#### v0.5.7-BETA
+- adding Accessories support
+  - when Shift-click a Backpack out of the Chest Slot it "vanishes" to 
+    get it back open the Accessories screen then it appears in an empty slot.
+
 #### v0.5.6-BETA
 - fixing an issue where client code causes the server to crash
 
