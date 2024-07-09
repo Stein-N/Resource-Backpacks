@@ -1,3 +1,7 @@
+#### v0.5.8-BETA
+- Fix the shift-click issue
+- removing trinket, accessories and curios setting 
+
 #### v0.5.7-BETA
 - adding Accessories support
   - when Shift-click a Backpack out of the Chest Slot it "vanishes" to 
