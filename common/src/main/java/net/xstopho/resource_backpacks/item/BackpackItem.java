@@ -24,13 +24,10 @@ import java.util.List;
 public class BackpackItem extends Item implements Equipable {
 
     private final BackpackLevel level;
-    private final int rows, columns;
 
     public BackpackItem(Properties properties, BackpackLevel level) {
         super(properties.stacksTo(1).component(DataComponentsRegistry.BACKPACK_CONTAINER.get(), BackpackContainerContent.EMPTY));
         this.level = level;
-        this.rows = level.getRows();
-        this.columns = level.getColumns();
     }
 
     @Override
@@ -45,12 +42,12 @@ public class BackpackItem extends Item implements Equipable {
 
     public MenuProvider getMenuProvider(ItemStack stack) {
         return switch(getLevel()) {
-            case LEATHER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.leatherContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
-            case COPPER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.copperContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
-            case GOLD -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.goldContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
-            case IRON -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.ironContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
-            case DIAMOND -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.diamondContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
-            case NETHERITE -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.netheriteContainer(i, inventory, new BackpackInventory(stack, this.rows * this.columns)), stack.getHoverName());
+            case LEATHER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.leatherContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case COPPER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.copperContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case GOLD -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.goldContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case IRON -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.ironContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case DIAMOND -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.diamondContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case NETHERITE -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.netheriteContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
         };
     }
 

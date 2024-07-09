@@ -10,6 +10,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
+import org.jetbrains.annotations.NotNull;
 
 public class BackpackContainer extends AbstractContainerMenu {
 
@@ -122,10 +123,10 @@ public class BackpackContainer extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int index) {
+    public @NotNull ItemStack quickMoveStack(Player player, int index) {
         ItemStack returnStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
-        if (slot != null && slot.hasItem()) {
+        if (slot.hasItem()) {
             ItemStack stack = slot.getItem();
             returnStack = stack.copy();
             if (index < this.backpackInventory.getContainerSize()) {
@@ -135,10 +136,8 @@ public class BackpackContainer extends AbstractContainerMenu {
             } else if (!this.moveItemStackTo(stack, 0, this.backpackInventory.getContainerSize(), false)) {
                 return ItemStack.EMPTY;
             }
-
             if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY);
             else slot.setChanged();
-
         }
         return returnStack;
     }
