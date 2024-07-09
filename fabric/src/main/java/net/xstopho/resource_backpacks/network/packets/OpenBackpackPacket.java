@@ -14,6 +14,7 @@ import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.BackpackItem;
+import net.xstopho.resourcelibrary.service.CoreServices;
 import org.jetbrains.annotations.NotNull;
 
 public record OpenBackpackPacket(int id) implements CustomPacketPayload {
@@ -54,11 +55,11 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
             }
         });
     }
-
     private static void openTrinketBackpack(ServerPlayer player, ItemStack stack) {
-        player.openMenu(((BackpackItem) stack.getItem()).getMenuProvider(stack));
+        if (stack.getItem() instanceof BackpackItem backpackItem) {
+            player.openMenu(backpackItem.getMenuProvider(stack));
+        }
     }
-
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() {
         return PACKET_TYPE;

@@ -76,8 +76,10 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     }
 
     private static void openTrinketBackpack(Player player, ItemStack stack) {
-        player.openMenu(((BackpackItem) stack.getItem()).getMenuProvider(stack));
-        playerList.add(player);
+        if (stack.getItem() instanceof BackpackItem backpackItem) {
+            player.openMenu(backpackItem.getMenuProvider(stack));
+            playerList.add(player);
+        }
     }
 
     @Override
