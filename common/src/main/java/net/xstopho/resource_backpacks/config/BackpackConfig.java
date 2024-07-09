@@ -11,7 +11,6 @@ public class BackpackConfig {
     public static Supplier<Integer> LEATHER_ROWS, LEATHER_COLUMNS, COPPER_ROWS, COPPER_COLUMNS, GOLD_ROWS, GOLD_COLUMNS,
                                     IRON_ROWS, IRON_COLUMNS, DIAMOND_ROWS, DIAMOND_COLUMNS, NETHERITE_ROWS, NETHERITE_COLUMNS;
     public static Supplier<Boolean> ALLOW_CHESTSLOT, ENABLE_BACKPACK_KEYBIND, OPEN_BACKPACK_FROM_INVENTORY;
-    public static Supplier<Boolean> ENABLE_TRINKETS, ENABLE_CURIOS, ENABLE_ACCESSORIES;
 
     static {
         BUILDER.push("General");
@@ -56,15 +55,9 @@ public class BackpackConfig {
         NETHERITE_ROWS = BUILDER.define("rows", 7);
         NETHERITE_COLUMNS = BUILDER.define("columns", 13);
         BUILDER.pop();
+    }
 
-        BUILDER.comment("These settings aren't implemented yet, so they have no effect on your gameplay!")
-                .push("Compatibility");
-        ENABLE_TRINKETS = BUILDER.comment("Enables the Compatibility with the Trinkets API.")
-                .define("trinkets", false);
-        ENABLE_CURIOS = BUILDER.comment("Enables the compatibility with the Curios API")
-                .define("curios", false);
-        ENABLE_ACCESSORIES = BUILDER.comment("Enables the compatibility with the Accessories API")
-                .define("accessories", false);
-        BUILDER.pop();
+    public static boolean isChestEquipable() {
+        return ALLOW_CHESTSLOT.get() && ENABLE_BACKPACK_KEYBIND.get();
     }
 }

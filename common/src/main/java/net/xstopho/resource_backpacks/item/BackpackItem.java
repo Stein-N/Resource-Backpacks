@@ -18,6 +18,8 @@ import net.xstopho.resource_backpacks.item.util.BackpackInventory;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainer;
+import net.xstopho.resourcelibrary.service.CoreServices;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -61,9 +63,15 @@ public class BackpackItem extends Item implements Equipable {
     }
 
     @Override
-    public EquipmentSlot getEquipmentSlot() {
-        if (BackpackConfig.ALLOW_CHESTSLOT.get() && BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) return EquipmentSlot.CHEST;
-        return null;
+    public @NotNull EquipmentSlot getEquipmentSlot() {
+        if (BackpackConfig.isChestEquipable() && noTrinketMod()) return EquipmentSlot.CHEST;
+        return EquipmentSlot.MAINHAND;
+    }
+
+    private boolean noTrinketMod() {
+        return !(CoreServices.isModLoaded("trinkets") ||
+                CoreServices.isModLoaded("accessories") ||
+                CoreServices.isModLoaded("curios"));
     }
 
     @Override
