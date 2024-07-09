@@ -13,9 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
+import net.xstopho.resource_backpacks.compat.curios.CurioHelper;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.BackpackItem;
-import net.xstopho.resourcelibrary.service.CoreServices;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -73,6 +73,11 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
             }
             playerList.remove(player);
         });
+    }
+
+    private static void openTrinketBackpack(Player player, ItemStack stack) {
+        player.openMenu(((BackpackItem) stack.getItem()).getMenuProvider(stack));
+        playerList.add(player);
     }
 
     @Override

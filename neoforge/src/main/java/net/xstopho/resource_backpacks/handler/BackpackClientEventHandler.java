@@ -8,6 +8,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
+import net.xstopho.resource_backpacks.compat.curios.CurioHelper;
 import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
@@ -19,6 +20,7 @@ public class BackpackClientEventHandler {
     @SubscribeEvent
     public static void onClientInit(FMLClientSetupEvent event) {
         AccessoriesHelper.initClient();
+        CurioHelper.initClient();
     }
 
     @SubscribeEvent
