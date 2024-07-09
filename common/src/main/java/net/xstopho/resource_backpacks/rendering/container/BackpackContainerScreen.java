@@ -50,8 +50,6 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
         guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 4210752, false);
     }
 
-
-    //TODO: redo this completely top 18 pixel and all sides 7 pixel
     private void renderBackpackContainer(GuiGraphics guiGraphics, int xPos, int yPos) {
         // render corners
         renderCorner(guiGraphics, Corner.TOP_LEFT, xPos, yPos);

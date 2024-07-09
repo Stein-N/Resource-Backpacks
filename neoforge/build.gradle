@@ -40,6 +40,7 @@ neoForge {
         }
         server {
             server()
+            programArguments.add('nogui')
         }
         data {
             data()
