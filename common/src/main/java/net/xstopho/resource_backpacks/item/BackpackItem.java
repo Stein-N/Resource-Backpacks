@@ -12,13 +12,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.components.BackpackContainerContent;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.util.BackpackInventory;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainer;
-import net.xstopho.resourcelibrary.service.CoreServices;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -69,9 +69,8 @@ public class BackpackItem extends Item implements Equipable {
     }
 
     private boolean noTrinketMod() {
-        return !(CoreServices.isModLoaded("trinkets") ||
-                CoreServices.isModLoaded("accessories") ||
-                CoreServices.isModLoaded("curios"));
+        return !(BackpackConstants.ACCESSORIES || BackpackConstants.CURIOS ||
+                BackpackConstants.TRINKETS);
     }
 
     @Override

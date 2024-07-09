@@ -37,13 +37,15 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
 
             if (!playerList.contains(player)) {
                 if (BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) {
-                    if (CoreServices.isModLoaded("accessories")) {
-                        ItemStack backStack = AccessoriesHelper.getEquippedBackpack((ServerPlayer) player);
-                        if (backStack.getItem() instanceof BackpackItem backpack) {
-                            player.openMenu(backpack.getMenuProvider(backStack));
-                            playerList.add(player);
-                            return;
-                        }
+
+                    if (BackpackConstants.ACCESSORIES) {
+                        openTrinketBackpack(player, AccessoriesHelper.getEquippedBackpack((ServerPlayer) player));
+                        return;
+                    }
+
+                    if (BackpackConstants.CURIOS) {
+                        openTrinketBackpack(player, CurioHelper.getEquippedBackpack((ServerPlayer) player));
+                        return;
                     }
 
                     if (chestStack.getItem() instanceof BackpackItem backpack) {

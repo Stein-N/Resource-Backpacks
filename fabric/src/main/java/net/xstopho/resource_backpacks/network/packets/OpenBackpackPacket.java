@@ -14,7 +14,6 @@ import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.BackpackItem;
-import net.xstopho.resourcelibrary.service.CoreServices;
 import org.jetbrains.annotations.NotNull;
 
 public record OpenBackpackPacket(int id) implements CustomPacketPayload {
@@ -29,12 +28,10 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
             ItemStack offhandStack = player.getOffhandItem();
 
             if (BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) {
-                if (CoreServices.isModLoaded("accessories")) {
-                    ItemStack backStack = AccessoriesHelper.getEquippedBackpack(player);
-                    if (backStack.getItem() instanceof BackpackItem backpack) {
-                        player.openMenu(backpack.getMenuProvider(backStack));
-                        return;
-                    }
+
+                if (BackpackConstants.ACCESSORIES) {
+                    openTrinketBackpack(player, AccessoriesHelper.getEquippedBackpack(player));
+                    return;
                 }
 
                 if (chestStack.getItem() instanceof BackpackItem backpack) {
@@ -56,6 +53,10 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
                 }
             }
         });
+    }
+
+    private static void openTrinketBackpack(ServerPlayer player, ItemStack stack) {
+        player.openMenu(((BackpackItem) stack.getItem()).getMenuProvider(stack));
     }
 
     @Override

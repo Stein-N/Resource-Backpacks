@@ -14,7 +14,6 @@ import net.xstopho.resource_backpacks.network.packets.OpenBackpackPacket;
 import net.xstopho.resource_backpacks.registries.KeyMappingRegistry;
 import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
 import net.xstopho.resource_backpacks.rendering.container.BackpackContainerScreen;
-import net.xstopho.resourcelibrary.service.CoreServices;
 
 public class ResourceBackpacksClient implements ClientModInitializer {
 
@@ -40,17 +39,11 @@ public class ResourceBackpacksClient implements ClientModInitializer {
         });
 
         AccessoriesHelper.initClient();
-
-        if (CoreServices.isModLoaded("trinkets")) registerTrinkets();
     }
 
     private void registerKeyMappings() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (openBackpack.consumeClick()) ClientPlayNetworking.send(new OpenBackpackPacket(1));
         });
-    }
-
-    private void registerTrinkets() {
-
     }
 }

@@ -6,13 +6,13 @@ import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.item.BackpackItem;
 import net.xstopho.resource_backpacks.registries.ItemRegistry;
-import net.xstopho.resourcelibrary.service.CoreServices;
 
 public class AccessoriesHelper {
     public static void initClient() {
-        if (CoreServices.isModLoaded("accessories")) {
+        if (BackpackConstants.ACCESSORIES) {
             AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_LEATHER.get(), BackpackAccessoryRenderer::new);
             AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_COPPER.get(), BackpackAccessoryRenderer::new);
             AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_GOLD.get(), BackpackAccessoryRenderer::new);

@@ -1,5 +1,3 @@
-import net.neoforged.moddevgradle.dsl.RunModel
-
 plugins {
     id 'ml-loader'
     id 'net.neoforged.moddev'
@@ -15,8 +13,8 @@ dependencies {
     implementation "net.xstopho.resourcelibrary:resourcelibrary-neoforge:${resource_library}"
 
     implementation "com.misterpemodder:shulkerboxtooltip-neoforge:${shulker_box_tooltip}+${minecraft_version}"
-    implementation "io.wispforest:accessories-neoforge:${accessories}"
-    //implementation "top.theillusivec4.curios:curios-neoforge:${curios_api}"
+    compileOnly "io.wispforest:accessories-neoforge:${accessories}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_api}"
 
     // Runtime Mods
     runtimeOnly "maven.modrinth:emi:${emi}+${minecraft_version}+neoforge"
