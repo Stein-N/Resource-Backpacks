@@ -1,3 +1,7 @@
+#### v0.6.0-BETA
+- NeoForge
+  - adding curios api support
+
 #### v0.5.8-BETA
 - Fix the shift-click issue
 - removing trinket, accessories and curios setting 
