@@ -23,7 +23,10 @@ eclipse
 */runs/server/*
 */runs/client/*
 */runs/data/*
+# Files that should be included to "save time"
 !*/runs/client/options.txt
+!*/runs/server/eula.txt
+!*/runs/server/server.properties
 
 # generated resources
 */src/generated/resources
