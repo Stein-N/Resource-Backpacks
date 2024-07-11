@@ -25,13 +25,14 @@ public class CurioHelper {
     }
 
     public static ItemStack getEquippedBackpack(ServerPlayer player) {
-        List<SlotResult> slotResults = CuriosApi.getCuriosInventory(player).get().findCurios("back");
+        if (BackpackConstants.CURIOS) {
+            List<SlotResult> slotResults = CuriosApi.getCuriosInventory(player).get().findCurios("back");
 
-        for (SlotResult result : slotResults.stream().toList()) {
-            ItemStack backpack = result.stack();
-            if (backpack.getItem() instanceof BackpackItem) return backpack;
+            for (SlotResult result : slotResults.stream().toList()) {
+                ItemStack backpack = result.stack();
+                if (backpack.getItem() instanceof BackpackItem) return backpack;
+            }
         }
-
         return ItemStack.EMPTY;
     }
 }

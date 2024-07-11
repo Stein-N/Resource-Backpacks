@@ -23,13 +23,14 @@ public class AccessoriesHelper {
     }
 
     public static ItemStack getEquippedBackpack(ServerPlayer player) {
-        AccessoriesContainer container = AccessoriesCapability.get(player).getContainers().get("back");
-        NonNullList<ItemStack> accessories = container.getAccessories().getItems();
+        if (BackpackConstants.ACCESSORIES) {
+            AccessoriesContainer container = AccessoriesCapability.get(player).getContainers().get("back");
+            NonNullList<ItemStack> accessories = container.getAccessories().getItems();
 
-        for (ItemStack stack : accessories) {
-            if (stack.getItem() instanceof BackpackItem) return stack;
+            for (ItemStack stack : accessories) {
+                if (stack.getItem() instanceof BackpackItem) return stack;
+            }
         }
-
         return ItemStack.EMPTY;
     }
 }
