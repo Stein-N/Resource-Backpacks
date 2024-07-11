@@ -1,3 +1,13 @@
+#### v0.6.1-BETA
+- Removing useless/unnecessary Settings
+  - Allow_Chestslot -> Chest slot gets disabled when a supported Trinket Mod is installed
+  - Allow_KeyBind -> why anyone would like to disable this
+  - Open_Backpack_from_Inventory ->  Open/Close KeyBind only works when Backpack is equipped
+    in Armor or Curio/Accessories Back Slot
+- Fixing issues with crafting recipes
+- Fixing Backpack Open/Close issue
+- Fixing rare issue where Backpack gets closed and open at the same time
+
 #### v0.6.0-BETA
 - NeoForge
   - adding curios api support
