@@ -114,7 +114,10 @@ public class BackpackContainerScreen extends AbstractContainerScreen<BackpackCon
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (KeyMappingRegistry.OPEN_BACKPACK.matches(keyCode, scanCode)) this.onClose();
+        if (KeyMappingRegistry.OPEN_BACKPACK.matches(keyCode, scanCode)) {
+            this.onClose();
+            return true;
+        }
 
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
