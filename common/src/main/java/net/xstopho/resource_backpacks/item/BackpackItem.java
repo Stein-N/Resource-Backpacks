@@ -64,7 +64,7 @@ public class BackpackItem extends Item implements Equipable {
 
     @Override
     public @NotNull EquipmentSlot getEquipmentSlot() {
-        if (BackpackConfig.isChestEquipable() && noTrinketMod()) return EquipmentSlot.CHEST;
+        if (noTrinketMod()) return EquipmentSlot.CHEST;
         return EquipmentSlot.MAINHAND;
     }
 

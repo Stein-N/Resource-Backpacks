@@ -7,79 +7,40 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
 import net.xstopho.resource_backpacks.compat.curios.CurioHelper;
-import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.item.BackpackItem;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public record OpenBackpackPacket(int id) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<OpenBackpackPacket> PACKET_TYPE = new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(BackpackConstants.MOD_ID, "open_backpack_packet"));
     public static final StreamCodec<RegistryFriendlyByteBuf, OpenBackpackPacket> PACKET_CODEC;
 
-    // not the best fix but it works
-    private static final List<Player> playerList = new ArrayList<>();
-
     public static void apply(OpenBackpackPacket packet, IPayloadContext context) {
         context.enqueueWork(() -> {
             Player player = context.player();
-            Inventory inventory = player.getInventory();
-            ItemStack chestStack = inventory.getArmor(EquipmentSlot.CHEST.getIndex());
-            ItemStack offhandStack = player.getOffhandItem();
+            if (player instanceof ServerPlayer serverPlayer) {
+                List<ItemStack> itemStacks = new LinkedList<>() {{
+                    add(AccessoriesHelper.getEquippedBackpack(serverPlayer));
+                    add(CurioHelper.getEquippedBackpack(serverPlayer));
+                    add(serverPlayer.getInventory().getArmor(EquipmentSlot.CHEST.getIndex()));
+                }};
 
-            if (!playerList.contains(player)) {
-                if (BackpackConfig.ENABLE_BACKPACK_KEYBIND.get()) {
-
-                    if (BackpackConstants.ACCESSORIES) {
-                        openTrinketBackpack(player, AccessoriesHelper.getEquippedBackpack((ServerPlayer) player));
-                        return;
-                    }
-
-                    if (BackpackConstants.CURIOS) {
-                        openTrinketBackpack(player, CurioHelper.getEquippedBackpack((ServerPlayer) player));
-                        return;
-                    }
-
-                    if (chestStack.getItem() instanceof BackpackItem backpack) {
-                        player.openMenu(backpack.getMenuProvider(chestStack));
-                        playerList.add(player);
-                        return;
-                    }
-
-                    if (offhandStack.getItem() instanceof BackpackItem offhandBackpack) {
-                        player.openMenu(offhandBackpack.getMenuProvider(offhandStack));
-                        playerList.add(player);
-                        return;
-                    }
-
-                    if (BackpackConfig.OPEN_BACKPACK_FROM_INVENTORY.get()) {
-                        for (ItemStack stack : inventory.items) {
-                            if (stack.getItem() instanceof BackpackItem backpackItem) {
-                                player.openMenu(backpackItem.getMenuProvider(stack));
-                            }
-                        }
-                        playerList.add(player);
+                for (ItemStack stack : itemStacks) {
+                    if (stack.getItem() instanceof BackpackItem backpackItem) {
+                        serverPlayer.openMenu(backpackItem.getMenuProvider(stack));
                         return;
                     }
                 }
             }
-            playerList.remove(player);
         });
-    }
-
-    private static void openTrinketBackpack(Player player, ItemStack stack) {
-        if (stack.getItem() instanceof BackpackItem backpackItem) {
-            player.openMenu(backpackItem.getMenuProvider(stack));
-            playerList.add(player);
-        }
     }
 
     @Override

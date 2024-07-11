@@ -1,6 +1,7 @@
 package net.xstopho.resource_backpacks.handler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -19,10 +20,8 @@ public class NeoForgeClientEventHandler {
     @SubscribeEvent
     public static void registerClientTickEvents(ClientTickEvent.Post event) {
         Player player = Minecraft.getInstance().player;
-        if (player != null) {
-            if (KeyMappingRegistry.OPEN_BACKPACK.consumeClick()) {
-                PacketDistributor.sendToServer(new OpenBackpackPacket(1));
-            }
+        if (KeyMappingRegistry.OPEN_BACKPACK.consumeClick()) {
+            PacketDistributor.sendToServer(new OpenBackpackPacket(1));
         }
     }
 
