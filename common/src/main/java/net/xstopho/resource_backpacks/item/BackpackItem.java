@@ -64,13 +64,8 @@ public class BackpackItem extends Item implements Equipable {
 
     @Override
     public @NotNull EquipmentSlot getEquipmentSlot() {
-        if (noTrinketMod()) return EquipmentSlot.CHEST;
+        if (BackpackConstants.noTrinketMod()) return EquipmentSlot.CHEST;
         return EquipmentSlot.MAINHAND;
-    }
-
-    private boolean noTrinketMod() {
-        return !(BackpackConstants.ACCESSORIES || BackpackConstants.CURIOS ||
-                BackpackConstants.TRINKETS);
     }
 
     @Override
