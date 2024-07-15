@@ -12,11 +12,11 @@ import net.xstopho.resource_backpacks.registries.ItemRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
-public class Recipes extends RecipeProvider {
+public class  RecipeProv extends RecipeProvider {
 
     private static RecipeOutput craftingOutput;
 
-    public Recipes(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
+    public RecipeProv(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
         super(pOutput, pRegistries);
     }
 

@@ -10,7 +10,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.xstopho.resource_backpacks.BackpackConstants;
-import net.xstopho.resource_backpacks.datagen.Recipes;
+import net.xstopho.resource_backpacks.datagen.RecipeProv;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
 
 import java.util.concurrent.CompletableFuture;
@@ -34,6 +34,6 @@ public class BackpackEventHandler {
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new Recipes(output, provider));
+        generator.addProvider(event.includeServer(), new RecipeProv(output, provider));
     }
 }
