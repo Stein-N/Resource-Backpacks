@@ -4,9 +4,6 @@ plugins {
     id 'me.modmuss50.mod-publish-plugin'
 }
 
-repositories {
-    maven { url "https://maven.octo-studios.com/releases" }
-}
 
 dependencies {
     implementation "net.xstopho.resourceconfigapi:resourceconfigapi-neoforge:${resource_config_api}"
