@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.xstopho.resource_backpacks.compat.accessories.AccessoriesHelper;
+import net.xstopho.resource_backpacks.compat.trinkets.TrinketHelper;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
 import net.xstopho.resource_backpacks.network.packets.OpenBackpackPacket;
@@ -39,6 +40,7 @@ public class ResourceBackpacksClient implements ClientModInitializer {
         });
 
         AccessoriesHelper.initClient();
+        TrinketHelper.initClient();
     }
 
     private void registerKeyMappings() {
