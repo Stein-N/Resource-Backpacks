@@ -27,6 +27,13 @@ repositories {
     maven { url 'https://maven.su5ed.dev/releases' }
     maven { url 'https://maven.fabricmc.net' }
     maven { url 'https://maven.shedaniel.me/' }
+
+    // Curios API Continuation
+    maven { url "https://maven.octo-studios.com/releases" }
+
+    // Trinkets
+    maven { url "https://maven.terraformersmc.com/" }
+    maven { url "https://maven.ladysnake.org/releases" }
 }
 
 dependencies {
