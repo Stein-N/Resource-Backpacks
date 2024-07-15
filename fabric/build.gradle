@@ -16,7 +16,7 @@ dependencies {
 
     modImplementation "com.misterpemodder:shulkerboxtooltip-fabric:${shulker_box_tooltip}+${minecraft_version}"
     modCompileOnly "io.wispforest:accessories-fabric:${accessories}"
-    modImplementation "dev.emi:trinkets:${trinkets}"
+    modCompileOnly "dev.emi:trinkets:${trinkets}"
 
     // Runtime Mods
     modRuntimeOnly "maven.modrinth:modmenu:${mod_menu}"
