@@ -15,12 +15,12 @@ public class CurioHelper {
 
     public static void initClient() {
         if (BackpackConstants.CURIOS) {
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_LEATHER.get(), BackpackRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_COPPER.get(), BackpackRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_GOLD.get(), BackpackRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_IRON.get(), BackpackRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_DIAMOND.get(), BackpackRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_NETHERITE.get(), BackpackRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_LEATHER.get(), BackpackCurioRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_COPPER.get(), BackpackCurioRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_GOLD.get(), BackpackCurioRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_IRON.get(), BackpackCurioRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_DIAMOND.get(), BackpackCurioRenderer::new);
+            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_NETHERITE.get(), BackpackCurioRenderer::new);
         }
     }
 
