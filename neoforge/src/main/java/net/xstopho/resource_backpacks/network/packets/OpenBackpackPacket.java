@@ -39,6 +39,12 @@ public record OpenBackpackPacket(int id) implements CustomPacketPayload {
                         return;
                     }
                 }
+
+                for (ItemStack stack : serverPlayer.getInventory().items) {
+                    if (stack.getItem() instanceof BackpackItem backpackItem) {
+                        serverPlayer.openMenu(backpackItem.getMenuProvider(stack));
+                    }
+                }
             }
         });
     }
