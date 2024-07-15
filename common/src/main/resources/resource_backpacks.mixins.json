@@ -4,11 +4,12 @@
     "package": "net.xstopho.resource_backpacks.mixin",
     "refmap": "${mod_id}.refmap.json",
     "compatibilityLevel": "JAVA_21",
-    "mixins": [],
-    "client": [
-        "PlayerRendererMixin",
+    "mixins": [
         "ShapedRecipeMixin",
         "SmithingTransformRecipeMixin"
+    ],
+    "client": [
+        "PlayerRendererMixin"
     ],
     "server": [],
     "injectors": {
