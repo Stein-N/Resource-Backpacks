@@ -15,12 +15,12 @@ public class TrinketHelper {
 
     public static void initClient() {
         if (BackpackConstants.TRINKETS) {
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_LEATHER.get(), new BackpackTrinketRenderer());
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_COPPER.get(), new BackpackTrinketRenderer());
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_GOLD.get(), new BackpackTrinketRenderer());
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_IRON.get(), new BackpackTrinketRenderer());
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_DIAMOND.get(), new BackpackTrinketRenderer());
-            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_NETHERITE.get(), new BackpackTrinketRenderer());
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_LEATHER.get(), BackpackTrinketRenderer::new);
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_COPPER.get(), BackpackTrinketRenderer::new);
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_GOLD.get(), BackpackTrinketRenderer::new);
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_IRON.get(), BackpackTrinketRenderer::new);
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_DIAMOND.get(), BackpackTrinketRenderer::new);
+            TrinketRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_NETHERITE.get(), BackpackTrinketRenderer::new);
         }
     }
 

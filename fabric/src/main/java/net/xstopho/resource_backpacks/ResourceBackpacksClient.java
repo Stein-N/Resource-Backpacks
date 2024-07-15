@@ -40,7 +40,7 @@ public class ResourceBackpacksClient implements ClientModInitializer {
         });
 
         AccessoriesHelper.initClient();
-        if (BackpackConstants.TRINKETS) TrinketHelper.initClient(); // Don't know why it needs the check twice, but it fixes the startup crash
+        TrinketHelper.initClient();
     }
 
     private void registerKeyMappings() {
