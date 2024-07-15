@@ -1,3 +1,8 @@
+#### v0.6.2-BETA
+- re-enable key to open backpacks in the inventory
+- Trinkets support for Fabric
+- fixing an issue where Items get lost when crafted(only on server)
+
 #### v0.6.1-BETA
 - Removing useless/unnecessary Settings
   - Allow_Chestslot -> Chest slot gets disabled when a supported Trinket Mod is installed
