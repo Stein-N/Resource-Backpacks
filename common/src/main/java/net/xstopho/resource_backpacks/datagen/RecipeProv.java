@@ -24,16 +24,16 @@ public class  RecipeProv extends RecipeProvider {
     public void buildRecipes(RecipeOutput output) {
         craftingOutput = output;
 
-        createBackpackCraftingRecipe(Items.CHEST, Items.LEATHER, ItemRegistry.BACKPACK_LEATHER.get());
-        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_LEATHER.get(), Items.COPPER_INGOT, ItemRegistry.BACKPACK_COPPER.get());
-        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_COPPER.get(), Items.GOLD_INGOT, ItemRegistry.BACKPACK_GOLD.get());
-        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_GOLD.get(), Items.IRON_INGOT, ItemRegistry.BACKPACK_IRON.get());
-        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_IRON.get(), Items.DIAMOND, ItemRegistry.BACKPACK_DIAMOND.get());
+        createBackpackCraftingRecipe(Items.CHEST, Ingredient.of(BackpackItemTags.BACKPACK_LEATHER_INGREDIENT), ItemRegistry.BACKPACK_LEATHER.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_LEATHER.get(), Ingredient.of(Items.COPPER_INGOT), ItemRegistry.BACKPACK_COPPER.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_COPPER.get(), Ingredient.of(Items.GOLD_INGOT), ItemRegistry.BACKPACK_GOLD.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_GOLD.get(), Ingredient.of(Items.IRON_INGOT), ItemRegistry.BACKPACK_IRON.get());
+        createBackpackCraftingRecipe(ItemRegistry.BACKPACK_IRON.get(), Ingredient.of(Items.DIAMOND), ItemRegistry.BACKPACK_DIAMOND.get());
 
         createBackpackSmithingRecipe(ItemRegistry.BACKPACK_DIAMOND.get(), Items.NETHERITE_INGOT, ItemRegistry.BACKPACK_NETHERITE.get());
     }
 
-    private void createBackpackCraftingRecipe(ItemLike input, ItemLike upgradeMaterial, ItemLike output) {
+    private void createBackpackCraftingRecipe(ItemLike input, Ingredient upgradeMaterial, ItemLike output) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, output, 1)
                 .pattern("UUU").pattern("UIU").pattern("UUU")
                 .define('U', upgradeMaterial).define('I', input)
