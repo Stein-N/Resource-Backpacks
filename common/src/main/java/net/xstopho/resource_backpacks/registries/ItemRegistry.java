@@ -18,6 +18,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> BACKPACK_IRON = register(BackpackLevel.IRON);
     public static final RegistryObject<Item> BACKPACK_DIAMOND = register(BackpackLevel.DIAMOND);
     public static final RegistryObject<Item> BACKPACK_NETHERITE = register(BackpackLevel.NETHERITE);
+    public static final RegistryObject<Item> BACKPACK_ENDER = register(BackpackLevel.ENDER);
 
     private static RegistryObject<Item> register(BackpackLevel level) {
         Item.Properties properties = level.equals(BackpackLevel.NETHERITE) ? new Item.Properties().fireResistant() : new Item.Properties();

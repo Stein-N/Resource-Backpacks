@@ -9,5 +9,6 @@
   "item.resource_backpacks.backpack_gold": "Goldrucksack",
   "item.resource_backpacks.backpack_iron": "Eisenrucksack",
   "item.resource_backpacks.backpack_diamond": "Diamantrucksack",
-  "item.resource_backpacks.backpack_netherite": "Netheritrucksack"
+  "item.resource_backpacks.backpack_netherite": "Netheritrucksack",
+  "item.resource_backpacks.backpack_ender": "Endrucksack"
 }

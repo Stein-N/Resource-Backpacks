@@ -11,7 +11,8 @@ public enum BackpackLevel {
     GOLD(GOLD_ROWS, GOLD_COLUMNS),
     IRON(IRON_ROWS, IRON_COLUMNS),
     DIAMOND(DIAMOND_ROWS, DIAMOND_COLUMNS),
-    NETHERITE(NETHERITE_ROWS, NETHERITE_COLUMNS);
+    NETHERITE(NETHERITE_ROWS, NETHERITE_COLUMNS),
+    ENDER(() -> 3, () -> 9);
 
     final Supplier<Integer> rows_supplier, columns_supplier;
     int rows, columns;

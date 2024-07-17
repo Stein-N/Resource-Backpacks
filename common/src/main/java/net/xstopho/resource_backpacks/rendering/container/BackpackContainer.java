@@ -69,6 +69,14 @@ public class BackpackContainer extends AbstractContainerMenu {
         return new BackpackContainer(MenuTypeRegistry.NETHERITE_BACKPACK_MENU.get(), syncId, inventory, backpackInventory, BackpackLevel.NETHERITE);
     }
 
+    public static BackpackContainer enderContainer(int syncId, Inventory inventory) {
+        return new BackpackContainer(MenuTypeRegistry.ENDER_BACKPACK_MENU.get(), syncId, inventory, BackpackLevel.ENDER);
+    }
+
+    public static BackpackContainer enderContainer(int syncId, Inventory inventory, Container backpackInventory) {
+        return new BackpackContainer(MenuTypeRegistry.ENDER_BACKPACK_MENU.get(), syncId, inventory, backpackInventory, BackpackLevel.ENDER);
+    }
+
     public BackpackContainer(MenuType<?> menuType, int syncId, Inventory playerInventory, Container backpackInventory, BackpackLevel level) {
         super(menuType, syncId);
         checkContainerSize(backpackInventory, level.getRows() * level.getColumns());

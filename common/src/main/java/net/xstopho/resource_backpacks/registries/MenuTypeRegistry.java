@@ -19,6 +19,7 @@ public class MenuTypeRegistry {
     public static final RegistryObject<MenuType<BackpackContainer>> IRON_BACKPACK_MENU = MENU_TYPES.register("iron_backpack_menu", () -> create(BackpackContainer::ironContainer));
     public static final RegistryObject<MenuType<BackpackContainer>> DIAMOND_BACKPACK_MENU = MENU_TYPES.register("diamond_backpack_menu", () -> create(BackpackContainer::diamondContainer));
     public static final RegistryObject<MenuType<BackpackContainer>> NETHERITE_BACKPACK_MENU = MENU_TYPES.register("netherite_backpack_menu", () -> create(BackpackContainer::netheriteContainer));
+    public static final RegistryObject<MenuType<BackpackContainer>> ENDER_BACKPACK_MENU = MENU_TYPES.register("ender_backpack_menu", () -> create(BackpackContainer::enderContainer));
 
 
     private static <T extends AbstractContainerMenu> MenuType<T> create(MenuType.MenuSupplier<T> supplier) {

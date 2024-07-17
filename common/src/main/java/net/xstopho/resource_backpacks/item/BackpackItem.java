@@ -50,6 +50,7 @@ public class BackpackItem extends Item implements Equipable {
             case IRON -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.ironContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
             case DIAMOND -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.diamondContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
             case NETHERITE -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.netheriteContainer(i, inventory, new BackpackInventory(stack, level.getRows() * level.getColumns())), stack.getHoverName());
+            case ENDER -> new SimpleMenuProvider((i, inventory, player) -> BackpackContainer.enderContainer(i, inventory, player.getEnderChestInventory()), stack.getHoverName());
         };
     }
 

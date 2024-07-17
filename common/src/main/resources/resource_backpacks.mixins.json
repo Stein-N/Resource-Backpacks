@@ -9,7 +9,7 @@
         "SmithingTransformRecipeMixin"
     ],
     "client": [
-        "PlayerRendererMixin"
+        "client.PlayerRendererMixin"
     ],
     "server": [],
     "injectors": {

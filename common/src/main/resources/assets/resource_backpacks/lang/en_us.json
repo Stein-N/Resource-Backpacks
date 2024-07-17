@@ -9,5 +9,6 @@
   "item.resource_backpacks.backpack_gold": "Gold Backpack",
   "item.resource_backpacks.backpack_iron": "Iron Backpack",
   "item.resource_backpacks.backpack_diamond": "Diamond Backpack",
-  "item.resource_backpacks.backpack_netherite": "Netherite Backpack"
+  "item.resource_backpacks.backpack_netherite": "Netherite Backpack",
+  "item.resource_backpacks.backpack_ender": "End Backpack"
 }

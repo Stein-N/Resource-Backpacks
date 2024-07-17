@@ -1,4 +1,4 @@
-package net.xstopho.resource_backpacks.mixin;
+package net.xstopho.resource_backpacks.mixin.client;
 
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
