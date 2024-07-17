@@ -32,6 +32,7 @@ public class ResourceBackpacksClient implements ClientModInitializer {
         MenuScreens.register(MenuTypeRegistry.IRON_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.DIAMOND_BACKPACK_MENU.get(), BackpackContainerScreen::new);
         MenuScreens.register(MenuTypeRegistry.NETHERITE_BACKPACK_MENU.get(), BackpackContainerScreen::new);
+        MenuScreens.register(MenuTypeRegistry.ENDER_BACKPACK_MENU.get(), BackpackContainerScreen::new);
 
         ClientPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
             for (BackpackLevel level : BackpackLevel.values()) {
