@@ -31,6 +31,15 @@ public class  RecipeProv extends RecipeProvider {
         createBackpackCraftingRecipe(ItemRegistry.BACKPACK_IRON.get(), Ingredient.of(Items.DIAMOND), ItemRegistry.BACKPACK_DIAMOND.get());
 
         createBackpackSmithingRecipe(ItemRegistry.BACKPACK_DIAMOND.get(), Items.NETHERITE_INGOT, ItemRegistry.BACKPACK_NETHERITE.get());
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.BACKPACK_ENDER.get(), 1)
+                .pattern("DCD").pattern("EBE").pattern("DCD")
+                .define('D', Items.DIAMOND)
+                .define('C', Items.ENDER_CHEST)
+                .define('E', Items.ENDER_EYE)
+                .define('B', ItemRegistry.BACKPACK_IRON.get())
+                .unlockedBy(getHasName(ItemRegistry.BACKPACK_IRON.get()), has(ItemRegistry.BACKPACK_IRON.get()))
+                .save(output, location("crafting/" + getSimpleRecipeName(ItemRegistry.BACKPACK_ENDER.get())));
     }
 
     private void createBackpackCraftingRecipe(ItemLike input, Ingredient upgradeMaterial, ItemLike output) {

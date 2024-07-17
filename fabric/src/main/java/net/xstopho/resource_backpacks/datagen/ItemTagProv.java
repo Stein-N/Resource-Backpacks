@@ -18,7 +18,8 @@ public class ItemTagProv extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider provider) {
         getOrCreateTagBuilder(BackpackItemTags.BACKPACKS)
                 .add(ItemRegistry.BACKPACK_LEATHER.get(), ItemRegistry.BACKPACK_COPPER.get(), ItemRegistry.BACKPACK_GOLD.get(),
-                        ItemRegistry.BACKPACK_IRON.get(), ItemRegistry.BACKPACK_DIAMOND.get(), ItemRegistry.BACKPACK_NETHERITE.get());
+                        ItemRegistry.BACKPACK_IRON.get(), ItemRegistry.BACKPACK_DIAMOND.get(), ItemRegistry.BACKPACK_NETHERITE.get(),
+                        ItemRegistry.BACKPACK_ENDER.get());
 
         getOrCreateTagBuilder(BackpackItemTags.BACKPACK_LEATHER_INGREDIENT).add(Items.LEATHER, Items.RABBIT_HIDE);
 
@@ -28,5 +29,6 @@ public class ItemTagProv extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(BackpackItemTags.BACKPACK_IRON).add(ItemRegistry.BACKPACK_IRON.get());
         getOrCreateTagBuilder(BackpackItemTags.BACKPACK_DIAMOND).add(ItemRegistry.BACKPACK_DIAMOND.get());
         getOrCreateTagBuilder(BackpackItemTags.BACKPACK_NETHERITE).add(ItemRegistry.BACKPACK_NETHERITE.get());
+        getOrCreateTagBuilder(BackpackItemTags.BACKPACK_ENDER).add(ItemRegistry.BACKPACK_ENDER.get());
     }
 }

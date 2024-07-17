@@ -23,7 +23,8 @@ public class ItemTagProv extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BackpackItemTags.BACKPACKS)
                 .add(ItemRegistry.BACKPACK_LEATHER.get(), ItemRegistry.BACKPACK_COPPER.get(), ItemRegistry.BACKPACK_GOLD.get(),
-                        ItemRegistry.BACKPACK_IRON.get(), ItemRegistry.BACKPACK_DIAMOND.get(), ItemRegistry.BACKPACK_NETHERITE.get());
+                        ItemRegistry.BACKPACK_IRON.get(), ItemRegistry.BACKPACK_DIAMOND.get(), ItemRegistry.BACKPACK_NETHERITE.get(),
+                        ItemRegistry.BACKPACK_ENDER.get());
 
         this.tag(BackpackItemTags.BACKPACK_LEATHER_INGREDIENT).add(Items.LEATHER, Items.RABBIT_HIDE);
 
@@ -33,5 +34,6 @@ public class ItemTagProv extends ItemTagsProvider {
         this.tag(BackpackItemTags.BACKPACK_IRON).add(ItemRegistry.BACKPACK_IRON.get());
         this.tag(BackpackItemTags.BACKPACK_DIAMOND).add(ItemRegistry.BACKPACK_DIAMOND.get());
         this.tag(BackpackItemTags.BACKPACK_NETHERITE).add(ItemRegistry.BACKPACK_NETHERITE.get());
+        this.tag(BackpackItemTags.BACKPACK_ENDER).add(ItemRegistry.BACKPACK_ENDER.get());
     }
 }

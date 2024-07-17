@@ -16,4 +16,5 @@ public class BackpackItemTags {
     public static final TagKey<Item> BACKPACK_IRON = TagHelper.createItemTag("backpack/iron");
     public static final TagKey<Item> BACKPACK_DIAMOND = TagHelper.createItemTag("backpack/diamond");
     public static final TagKey<Item> BACKPACK_NETHERITE = TagHelper.createItemTag("backpack/netherite");
+    public static final TagKey<Item> BACKPACK_ENDER = TagHelper.createItemTag("backpack/ender");
 }
