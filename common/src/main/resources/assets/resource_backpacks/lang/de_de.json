@@ -4,6 +4,16 @@
   "category.resource_backpacks.controls": "Resource Backpacks",
   "key.resource_backpacks.open_backpack": "Öffnen/Schließen des Rucksack Inventars",
 
+  "tag.item.c.backpacks": "Rucksack",
+  "tag.item.c.backpack.leather_ingredient": "Leder Alternativen",
+  "tag.item.c.backpack.leather": "Leder Rucksack",
+  "tag.item.c.backpack.copper": "Kupfer Rucksack",
+  "tag.item.c.backpack.gold": "Gold Rucksack",
+  "tag.item.c.backpack.iron": "Eisen Rucksack",
+  "tag.item.c.backpack.diamond": "Diamant Rucksack",
+  "tag.item.c.backpack.netherite": "Netherit Rucksack",
+  "tag.item.c.backpack.ender": "End Rucksack",
+
   "item.resource_backpacks.backpack_leather": "Lederrucksack",
   "item.resource_backpacks.backpack_copper": "Kupferrucksack",
   "item.resource_backpacks.backpack_gold": "Goldrucksack",

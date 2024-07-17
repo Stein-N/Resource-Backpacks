@@ -4,6 +4,16 @@
   "category.resource_backpacks.controls": "Resource Backpacks",
   "key.resource_backpacks.open_backpack": "Open/Close Backpack Inventory",
 
+  "tag.item.c.backpacks": "Backpack",
+  "tag.item.c.backpack.leather_ingredient": "Leather Ingredients",
+  "tag.item.c.backpack.leather": "Leather Backpack",
+  "tag.item.c.backpack.copper": "Copper Backpack",
+  "tag.item.c.backpack.gold": "Gold Backpack",
+  "tag.item.c.backpack.iron": "Iron Backpack",
+  "tag.item.c.backpack.diamond": "Diamond Backpack",
+  "tag.item.c.backpack.netherite": "Netherite Backpack",
+  "tag.item.c.backpack.ender": "End Backpack",
+
   "item.resource_backpacks.backpack_leather": "Leather Backpack",
   "item.resource_backpacks.backpack_copper": "Copper Backpack",
   "item.resource_backpacks.backpack_gold": "Gold Backpack",
