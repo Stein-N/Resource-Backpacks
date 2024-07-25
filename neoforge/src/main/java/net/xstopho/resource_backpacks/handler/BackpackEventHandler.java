@@ -25,7 +25,6 @@ public class BackpackEventHandler {
     public static void registerPacketHandler(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar payload = event.registrar(BackpackConstants.MOD_ID);
 
-        BackpackNetwork.registerClient(payload);
         BackpackNetwork.registerServer(payload);
     }
 
