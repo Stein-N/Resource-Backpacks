@@ -1,3 +1,10 @@
+#### v0.7.0-BETA
+- port to Forge
+- adding proper Item Tags
+- adding ender Backpack
+- Leather Backpack Recipe now also accepts Rabbit Hide
+- Updating Resource Config API to 2.1.0
+
 #### v0.6.2-BETA
 - re-enable key to open backpacks in the inventory
 - Trinkets support for Fabric
