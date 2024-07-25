@@ -14,37 +14,21 @@ public enum BackpackLevel {
     NETHERITE(NETHERITE_ROWS, NETHERITE_COLUMNS),
     ENDER(() -> 3, () -> 9);
 
-    final Supplier<Integer> rows_supplier, columns_supplier;
-    int rows, columns;
+    final Supplier<Integer> rows, columns;
 
     BackpackLevel(Supplier<Integer> rows_supplier, Supplier<Integer> columns_supplier) {
-        this.rows_supplier = rows_supplier;
-        this.columns_supplier = columns_supplier;
-
-        this.rows = rows_supplier.get();
-        this.columns = columns_supplier.get();
+        this.rows = rows_supplier;
+        this.columns = columns_supplier;
     }
 
     public int getColumns() {
-        return Math.max(9, Math.min(50, columns));
+        return Math.max(9, Math.min(50, columns.get()));
     }
 
     public int getRows() {
-        return Math.max(1, Math.min(25, rows));
+        return Math.max(1, Math.min(25, rows.get()));
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
-
-    public void resetValues() {
-        setRows(rows_supplier.get());
-        setColumns(columns_supplier.get());
-    }
 
     public String getName() {
         return this.toString().toLowerCase();
