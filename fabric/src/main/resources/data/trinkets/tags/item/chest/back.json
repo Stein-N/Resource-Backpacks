@@ -6,6 +6,7 @@
     "resource_backpacks:backpack_gold",
     "resource_backpacks:backpack_iron",
     "resource_backpacks:backpack_diamond",
-    "resource_backpacks:backpack_netherite"
+    "resource_backpacks:backpack_netherite",
+    "resource_backpacks:backpack_ender"
   ]
 }
