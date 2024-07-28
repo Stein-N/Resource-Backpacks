@@ -46,7 +46,7 @@ minecraft {
         data {
             workingDirectory project.file('runs/client')
             ideaModule "${rootProject.name}.${project.name}.main"
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources'), '--existing', project(':common').file("src/main/resources/").getAbsolutePath()
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources'), '--existing', file("../common/src/main/resources/").getAbsolutePath()
             taskName 'Data'
             mods {
                 modDataRun {
