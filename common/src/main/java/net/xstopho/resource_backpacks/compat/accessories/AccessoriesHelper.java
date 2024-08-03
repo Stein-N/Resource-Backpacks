@@ -13,12 +13,11 @@ import net.xstopho.resource_backpacks.registries.ItemRegistry;
 public class AccessoriesHelper {
     public static void initClient() {
         if (BackpackConstants.ACCESSORIES) {
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_LEATHER.get(), BackpackAccessoryRenderer::new);
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_COPPER.get(), BackpackAccessoryRenderer::new);
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_GOLD.get(), BackpackAccessoryRenderer::new);
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_IRON.get(), BackpackAccessoryRenderer::new);
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_DIAMOND.get(), BackpackAccessoryRenderer::new);
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BACKPACK_NETHERITE.get(), BackpackAccessoryRenderer::new);
+            ItemRegistry.ITEMS.getEntries().forEach(itemRegistryObject -> {
+                if (itemRegistryObject.get() instanceof BackpackItem) {
+                    AccessoriesRendererRegistry.registerRenderer(itemRegistryObject.get(), BackpackAccessoryRenderer::new);
+                }
+            });
         }
     }
 

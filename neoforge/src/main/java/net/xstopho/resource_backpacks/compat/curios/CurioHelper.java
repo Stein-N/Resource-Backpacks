@@ -15,12 +15,11 @@ public class CurioHelper {
 
     public static void initClient() {
         if (BackpackConstants.CURIOS) {
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_LEATHER.get(), BackpackCurioRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_COPPER.get(), BackpackCurioRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_GOLD.get(), BackpackCurioRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_IRON.get(), BackpackCurioRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_DIAMOND.get(), BackpackCurioRenderer::new);
-            CuriosRendererRegistry.register(ItemRegistry.BACKPACK_NETHERITE.get(), BackpackCurioRenderer::new);
+            ItemRegistry.ITEMS.getEntries().forEach(itemRegistryObject -> {
+                if (itemRegistryObject.get() instanceof BackpackItem) {
+                    CuriosRendererRegistry.register(itemRegistryObject.get(), BackpackCurioRenderer::new);
+                }
+            });
         }
     }
 
