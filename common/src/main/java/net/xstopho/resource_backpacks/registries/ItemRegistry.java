@@ -10,7 +10,7 @@ import net.xstopho.resourcelibrary.registration.RegistryProvider;
 
 public class ItemRegistry {
 
-    private static final RegistryProvider<Item> ITEMS = RegistryProvider.get(BuiltInRegistries.ITEM, BackpackConstants.MOD_ID);
+    public static final RegistryProvider<Item> ITEMS = RegistryProvider.get(BuiltInRegistries.ITEM, BackpackConstants.MOD_ID);
 
     public static final RegistryObject<Item> BACKPACK_LEATHER = register(BackpackLevel.LEATHER);
     public static final RegistryObject<Item> BACKPACK_COPPER = register(BackpackLevel.COPPER);

@@ -20,6 +20,7 @@ public class BackpackRenderer {
             poseStack.mulPose(Axis.XP.rotationDegrees(29));
             poseStack.translate(0, -0.115, -0.11);
         }
+
         Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, player.level(), 0);
         poseStack.popPose();
     }
