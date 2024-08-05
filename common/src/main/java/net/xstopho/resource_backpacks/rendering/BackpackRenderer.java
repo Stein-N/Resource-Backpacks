@@ -14,11 +14,11 @@ public class BackpackRenderer {
     public static void render(ItemStack stack, PoseStack poseStack, MultiBufferSource multiBufferSource, int light, LivingEntity player) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.XP.rotationDegrees(180));
-        poseStack.translate(0, -0.358, -0.20);
+        poseStack.translate(0, -0.345, -0.16);
 
         if (player.isShiftKeyDown()) {
             poseStack.mulPose(Axis.XP.rotationDegrees(29));
-            poseStack.translate(0, -0.115, -0.11);
+            poseStack.translate(0, -0.15, -0.09);
         }
 
         Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, player.level(), 0);

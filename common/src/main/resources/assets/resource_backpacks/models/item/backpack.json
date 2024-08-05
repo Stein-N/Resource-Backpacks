@@ -3,9 +3,9 @@
 	"elements": [
 		{
 			"name": "Main",
-			"from": [4, 1, 6.86966],
-			"to": [12, 10, 10.86966],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [4, 1, 6],
+			"to": [12, 10, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [8, 0, 16, 9], "texture": "#all"},
 				"east": {"uv": [5, 0, 9, 9], "texture": "#all"},
@@ -17,9 +17,9 @@
 		},
 		{
 			"name": "Bottom",
-			"from": [5, 0, 6.86966],
-			"to": [11, 1, 10.86966],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [5, 0, 6],
+			"to": [11, 1, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [10, 9, 16, 10], "texture": "#all"},
 				"east": {"uv": [11, 9, 15, 10], "texture": "#all"},
@@ -30,9 +30,9 @@
 		},
 		{
 			"name": "Left Pouch",
-			"from": [12.001, 1.001, 7.37066],
-			"to": [12.999, 4.999, 10.36866],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [12, 1, 6.5],
+			"to": [13, 5, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [6, 9, 7, 13], "texture": "#all"},
 				"east": {"uv": [6, 9, 9, 13], "texture": "#all"},
@@ -43,9 +43,9 @@
 		},
 		{
 			"name": "Right Pouch",
-			"from": [3.001, 1.001, 7.37066],
-			"to": [3.999, 4.999, 10.36866],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [3, 1, 6.5],
+			"to": [4, 5, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [6, 9, 7, 13], "texture": "#all"},
 				"south": {"uv": [6, 9, 7, 13], "texture": "#all"},
@@ -56,9 +56,9 @@
 		},
 		{
 			"name": "Left Strap",
-			"from": [9, 6.25, 10],
-			"to": [11, 11.25, 10],
-			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 9.44142, 10.20947]},
+			"from": [9, 6.25, 9.3],
+			"to": [11, 11.25, 9.3],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 9.44142, 9.20947]},
 			"faces": {
 				"north": {"uv": [9, 9, 11, 14], "texture": "#all"},
 				"east": {"uv": [0, 0, 0, 0], "texture": "#all"},
@@ -70,9 +70,9 @@
 		},
 		{
 			"name": "Right Strap",
-			"from": [5, 6.25, 10],
-			"to": [7, 11.25, 10],
-			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 9.44142, 10.20947]},
+			"from": [5, 6.25, 9.3],
+			"to": [7, 11.25, 9.3],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 9.44142, 9.20947]},
 			"faces": {
 				"north": {"uv": [11, 9, 9, 14], "texture": "#all"},
 				"south": {"uv": [9, 9, 11, 14], "texture": "#all"}
@@ -80,9 +80,9 @@
 		},
 		{
 			"name": "Small Pouch",
-			"from": [5, 1, 5.86966],
-			"to": [11, 8, 6.86966],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [5, 1, 5],
+			"to": [11, 8, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [0, 9, 6, 16], "texture": "#all"},
 				"east": {"uv": [0, 9, 1, 16], "texture": "#all"},
@@ -93,9 +93,9 @@
 		},
 		{
 			"name": "Decorator",
-			"from": [6.5, 1.5, 5.36966],
-			"to": [9.5, 4.5, 6.36966],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 7.93483]},
+			"from": [6.5, 1.5, 4.5],
+			"to": [9.5, 4.5, 5.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.7681, 6.93483]},
 			"faces": {
 				"north": {"uv": [6, 13, 9, 16], "texture": "#all"},
 				"east": {"uv": [6, 13, 7, 16], "texture": "#all"},
