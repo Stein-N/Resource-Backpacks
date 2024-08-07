@@ -2,7 +2,10 @@ package net.xstopho.resource_backpacks.registries;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.xstopho.resource_backpacks.BackpackConstants;
+import net.xstopho.resource_backpacks.block.BackpackBlock;
 import net.xstopho.resource_backpacks.item.BackpackItem;
 import net.xstopho.resource_backpacks.item.util.BackpackLevel;
 import net.xstopho.resourcelibrary.registration.RegistryObject;
@@ -22,7 +25,7 @@ public class ItemRegistry {
 
     private static RegistryObject<Item> register(BackpackLevel level) {
         Item.Properties properties = level.equals(BackpackLevel.NETHERITE) ? new Item.Properties().fireResistant() : new Item.Properties();
-        return ITEMS.register("backpack_" + level.getName(), () -> new BackpackItem(properties, level));
+        return ITEMS.register("backpack_" + level.getName(), () -> new BackpackItem(properties, new BackpackBlock(level, BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK)), level));
     }
 
     public static void init() {};

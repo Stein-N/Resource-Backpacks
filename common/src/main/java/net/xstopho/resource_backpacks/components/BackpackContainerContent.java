@@ -142,6 +142,14 @@ public class BackpackContainerContent {
         return this.hashCode;
     }
 
+    public NonNullList<ItemStack> getItems() {
+        return items;
+    }
+
+    public int getSize() {
+        return this.items.size();
+    }
+
     static {
         CODEC = BackpackContainerContent.Slot.CODEC.sizeLimitedListOf(MAX_SIZE).xmap(BackpackContainerContent::fromSlots, BackpackContainerContent::asSlots);
         STREAM_CODEC = ItemStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list(MAX_SIZE)).map(BackpackContainerContent::new, (p_331691_) -> p_331691_.items);

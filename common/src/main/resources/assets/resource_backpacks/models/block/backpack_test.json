@@ -1,0 +1,6 @@
+{
+  "parent": "resource_backpacks:block/backpack",
+  "textures": {
+    "all": "resource_backpacks:block/backpack_leather"
+  }
+}

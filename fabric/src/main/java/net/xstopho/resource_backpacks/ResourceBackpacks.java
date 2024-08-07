@@ -3,10 +3,7 @@ package net.xstopho.resource_backpacks;
 import net.fabricmc.api.ModInitializer;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
 import net.xstopho.resource_backpacks.network.BackpackNetwork;
-import net.xstopho.resource_backpacks.registries.CreativeTabRegistry;
-import net.xstopho.resource_backpacks.registries.DataComponentsRegistry;
-import net.xstopho.resource_backpacks.registries.ItemRegistry;
-import net.xstopho.resource_backpacks.registries.MenuTypeRegistry;
+import net.xstopho.resource_backpacks.registries.*;
 import net.xstopho.resourceconfigapi.api.ConfigRegistry;
 
 public class ResourceBackpacks implements ModInitializer {
@@ -17,8 +14,10 @@ public class ResourceBackpacks implements ModInitializer {
         BackpackNetwork.initServer();
 
         DataComponentsRegistry.init();
+        BlockEntityTypeRegistry.init();
 
-        ItemRegistry.init();
+        //ItemRegistry.init();
+        BlockRegistry.init();
         MenuTypeRegistry.init();
 
         CreativeTabRegistry.init();

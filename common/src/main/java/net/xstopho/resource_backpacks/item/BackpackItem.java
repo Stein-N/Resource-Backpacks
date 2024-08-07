@@ -7,11 +7,9 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Equipable;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.xstopho.resource_backpacks.BackpackConstants;
 import net.xstopho.resource_backpacks.components.BackpackContainerContent;
 import net.xstopho.resource_backpacks.config.BackpackConfig;
@@ -23,12 +21,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class BackpackItem extends Item implements Equipable {
+public class BackpackItem extends BlockItem implements Equipable {
 
     private final BackpackLevel level;
 
-    public BackpackItem(Properties properties, BackpackLevel level) {
-        super(properties.stacksTo(1).component(DataComponentsRegistry.BACKPACK_CONTAINER.get(), BackpackContainerContent.EMPTY));
+    public BackpackItem(Properties properties, Block block, BackpackLevel level) {
+        super(block, properties.stacksTo(1).component(DataComponentsRegistry.BACKPACK_CONTAINER.get(), BackpackContainerContent.EMPTY));
         this.level = level;
     }
 
